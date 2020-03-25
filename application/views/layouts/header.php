@@ -6,9 +6,11 @@
     </head>
         <header class="header">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand">Discover Commerce</a>
+             <h1 class="navbar-brand">Discover Commerce</h1>
+               <div class="shopping-cart">
+                <a href="#">Shopping cart</a>
+               </div>
             </nav>
         </header>
     </nav>
-
     

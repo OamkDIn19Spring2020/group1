@@ -3,9 +3,9 @@
         public function register($enc_password){
                 //Data array for cutomer
             $data = array(
-                'name' => $this->input->post('name'),
-                'lastname' => $this->input->post('lastname'),
-                'dateofbirth' => $this->input->post('dateofbirth'),
+                'f_name' => $this->input->post('name'),
+                'l_name' => $this->input->post('lastname'),
+                'date_of_birth' => $this->input->post('dateofbirth'),
                 'address' => $this->input->post('address'),
                 'zipcode' => $this->input->post('zipcode'),
                 'city' => $this->input->post('city'),

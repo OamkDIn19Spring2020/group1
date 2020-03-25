@@ -7,7 +7,7 @@ class Customers extends CI_Controller {
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('password2', 'Password Confirmation', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
 
         if($this->form_validation->run() === FALSE) {
             $this->load->view('layouts/header');
@@ -22,7 +22,7 @@ class Customers extends CI_Controller {
 
             $this->user_model->register($enc_password);
 
-            //Message once singed up
+            //Message shown once singed up
 
             $this->session->set_flashdata('user_registered', 'Registartion succees you can now log in');
 
