@@ -1,5 +1,5 @@
 <?php
-
+//Registeration function
 class Customers extends CI_Controller {
     public function register(){
         $data['title'] = 'Sign Up';
@@ -30,5 +30,40 @@ class Customers extends CI_Controller {
 
         }
     }
-    
+
+        //Login function
+
+        public function login(){
+        $data['title'] = 'Sing In';
+
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if($this->form_validation->run() === FALSE) {
+            $this->load->view('layouts/header');
+            $this->load->view('layouts/body');
+            $this->load->view('customers/login', $data);
+            $this->load->view('layouts/footer');
+
+        } else {
+
+            //Message shown once singed up
+
+            $this->session->set_flashdata('user_loggedin', 'Log in success');
+
+            redirect('home');
+
+        }
+    }
+
+    //cheking if email exsists
+    function check_email_exists($email) {
+        $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
+        
+        if($this->customer_model->check_email_exists($email)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

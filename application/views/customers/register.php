@@ -18,19 +18,19 @@
     </div>
     <div class="form-group">
         <label>Address</label>
-        <input type="text" class="form-control" name="address" placeholder="address">
+        <input type="text" class="form-control" name="address" placeholder="Streetaddress">
     </div>
     <div class="form-group">
         <label>Zipcode</label>
-        <input type="text" class="form-control" name="zipcode" placeholder="zipcode">
+        <input type="text" class="form-control" name="zipcode" placeholder="Zipcode">
     </div>
     <div class="form-group">
         <label>City</label>
-        <input type="text" class="form-control" name="city" placeholder="city">
+        <input type="text" class="form-control" name="city" placeholder="City">
     </div>
     <div class="form-group">
         <label>Phone</label>
-        <input type="text" class="form-control" name="phone" placeholder="phone">
+        <input type="text" class="form-control" name="phone" placeholder="Phone">
     </div>
     <div class="form-group">
         <label>Email</label>
@@ -38,7 +38,7 @@
     </div>
     <div class="form-group">
         <label>Password</label>
-        <input type="password" class="form-control" name="password" placeholder="password">
+        <input type="password" class="form-control" name="password" placeholder="Password">
     </div>
     <div class="form-group">
         <label>Confirm Password</label>

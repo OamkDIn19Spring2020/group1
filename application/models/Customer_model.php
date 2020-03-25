@@ -3,20 +3,29 @@
         public function register($enc_password){
                 //Data array for cutomer
             $data = array(
-                'f_name' => $this->input->post('name'),
-                'l_name' => $this->input->post('lastname'),
+                'firstname' => $this->input->post('name'),
+                'lastname' => $this->input->post('lastname'),
                 'date_of_birth' => $this->input->post('dateofbirth'),
-                'address' => $this->input->post('address'),
+                'streetaddress' => $this->input->post('streetaddress'),
                 'zipcode' => $this->input->post('zipcode'),
                 'city' => $this->input->post('city'),
                 'phone' => $this->input->post('phone'),
                 'email' => $this->input->post('email'),
                 'password' => $enc_password
-
-
             );
 
             //Insert customer
-            return $this->db->insert('customer', $data);
+            return $this->db->insert('customers', $data);
+        }
+
+        // Cheking if email exists
+        public function check_email_exists($email){
+            $query = $this->db->get_where('customers', array('email' => $email));
+
+            if(empty($query->row_array())){
+                return true;
+            } else {
+                return false;
+            }
         }
     }
