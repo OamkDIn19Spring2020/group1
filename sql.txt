@@ -1,0 +1,176 @@
+CREATE database discovery;
+USE discovery;
+
+CREATE TABLE customers (
+	idCustomers SMALLINT PRIMARY KEY AUTO_INCREMENT,
+	firstname VARCHAR (100) NOT NULL,
+	lastname VARCHAR (100) NOT NULL,
+	streetaddress VARCHAR (100),
+	zipcode INT(5),
+	city VARCHAR (100),
+	date_of_birth DATE,
+	email VARCHAR (100) UNIQUE,
+	password VARCHAR (100),
+	phone VARCHAR (20),
+	date_joined DATETIME,
+	logged_in BOOLEAN,
+	deleted BOOLEAN 
+);
+
+INSERT INTO customers (
+	firstname,
+	lastname,
+	streetaddress,
+	zipcode,
+	city,
+	date_of_birth,
+	email,
+	password,
+	phone)
+VALUES (
+	'Maija', 'Meikäläinen', 'Kumpumäensuora 55', '90500', 'Oulu', '1996/10/20', 'maimei@gmail.com', 'jepajee', '0449876543');
+
+CREATE TABLE sellers (
+	idSellers SMALLINT PRIMARY KEY AUTO_INCREMENT,
+	firstname VARCHAR (100) NOT NULL,
+	lastname VARCHAR (100) NOT NULL,
+	streetaddress VARCHAR (100),
+	zipcode INT(5),
+	city VARCHAR (100),
+	date_of_birth DATE,
+	email VARCHAR (100) UNIQUE,
+	password VARCHAR (100),
+	phone VARCHAR (20),
+	date_joined DATETIME,
+	logged_in BOOLEAN,
+	deleted BOOLEAN 
+);
+
+INSERT INTO sellers (
+	firstname,
+	lastname,
+	streetaddress,
+	zipcode,
+	city,
+	date_of_birth,
+	email,
+	password,
+	phone)
+VALUES (
+	'Pentti', 'Paukku', 'Korvatunturi', '99999', 'Korvatunturi', '1948/7/12', 'joulupukki@korvatunturi.fi', 'houhou', '0401234567');
+
+CREATE TABLE categories (
+	idCategories SMALLINT PRIMARY KEY,
+	name VARCHAR(100)
+);
+
+INSERT INTO categories (
+	idCategories,
+	name)
+VALUES (
+	'1', 'Decoration');
+
+CREATE TABLE productCategories (
+	idProductCategories SMALLINT,
+	name VARCHAR(100),
+	idCategories SMALLINT,
+	PRIMARY KEY (idProductCategories),
+	FOREIGN KEY (idCategories) REFERENCES categories(idCategories)
+);
+
+INSERT INTO productCategories (
+	idProductCategories,
+	name)
+VALUES (
+	'1', 'Lamps');
+
+CREATE TABLE products (
+	idProducts SMALLINT AUTO_INCREMENT,
+	idProductCategories SMALLINT,
+	title VARCHAR (100),
+	description VARCHAR(255),
+	image VARCHAR(255),
+	price INT,
+	quantity INT,
+	created TIMESTAMP,
+	idSellers SMALLINT,
+	PRIMARY KEY (idProducts),
+	FOREIGN KEY (idProductCategories) REFERENCES productCategories (idProductCategories),
+	FOREIGN KEY (idSellers) REFERENCES sellers(idSellers)
+);
+
+INSERT INTO products (
+	idProductCategories,
+	title,
+	description,
+	price,
+	quantity,
+	idSellers)
+VALUES (
+	'1', 'Cool lamp', 'Almost new and rarely used cool lamp', '25', '1', '1'
+);
+
+CREATE TABLE orders (
+	idOrders SMALLINT AUTO_INCREMENT,
+	status VARCHAR(20),
+	totalPrice INT,
+	idCustomers SMALLINT,
+	idSellers SMALLINT,
+	orderDate DATETIME,
+	PRIMARY KEY (idOrders),
+	FOREIGN KEY (idCustomers) REFERENCES customers(idCustomers),
+	FOREIGN KEY (idSellers) REFERENCES sellers(idSellers)
+);
+
+INSERT INTO orders (
+	status,
+	idCustomers,
+	idSellers)
+VALUES (
+	'Completed', '1', '1');
+
+CREATE TABLE orderDetails (
+	idOrders SMALLINT,
+	idProducts SMALLINT,
+	quantity INT,
+	singlePrice INT,
+	PRIMARY KEY (idOrders),
+	FOREIGN KEY (idProducts) REFERENCES products(idProducts)
+);
+
+INSERT INTO orderDetails (
+	idOrders,
+	idProducts,
+	quantity,
+	singlePrice)
+VALUES (
+	'1', '1', '1', '25');
+
+CREATE TABLE shoppingCart (
+	idShoppingCart SMALLINT AUTO_INCREMENT,
+	idProducts SMALLINT,
+	idCustomers SMALLINT,
+	totalPrice INT,
+	PRIMARY KEY (idShoppingCart),
+	FOREIGN KEY (idCustomers) REFERENCES customers(idCustomers),
+	FOREIGN KEY (idProducts) REFERENCES products(idProducts)
+);
+
+INSERT INTO shoppingCart (
+	idProducts,
+	idCustomers,
+	totalPrice)
+VALUES (
+	'1', '1', '25');
+
+CREATE TABLE soldProducts (
+	idSoldProducts SMALLINT AUTO_INCREMENT,
+	idOrders SMALLINT,
+	PRIMARY KEY (idSoldProducts),
+	FOREIGN KEY (idOrders) REFERENCES orders(idOrders)
+);
+
+INSERT INTO soldProducts (
+	idOrders)
+VALUES (
+	'1');
