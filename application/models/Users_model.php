@@ -14,13 +14,13 @@
                 'password' => $enc_password
             );
 
-            //Insert customer
+            //Insert register data to customer or sellers, ad if else statement?
             return $this->db->insert('customers', $data);
         }
 
         // Cheking if email exists
         public function check_email_exists($email){
-            $query = $this->db->get_where('customers', array('email' => $email));
+            $query = $this->db->get_where('customers','sellers', array('email' => $email));
 
             if(empty($query->row_array())){
                 return true;

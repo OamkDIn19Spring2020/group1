@@ -1,6 +1,6 @@
 <?php
 //Registeration function
-class Customers extends CI_Controller {
+class Users extends CI_Controller {
     public function register(){
         $data['title'] = 'Sign Up';
 
@@ -12,7 +12,7 @@ class Customers extends CI_Controller {
         if($this->form_validation->run() === FALSE) {
             $this->load->view('layouts/header');
             $this->load->view('layouts/body');
-            $this->load->view('customers/register', $data);
+            $this->load->view('users/register', $data);
             $this->load->view('layouts/footer');
 
         } else {
