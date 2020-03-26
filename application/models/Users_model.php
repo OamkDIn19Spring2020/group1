@@ -1,7 +1,7 @@
 <?php 
-    class Customer_model extends CI_Model {
+    class Users_model extends CI_Model {
         public function register($enc_password){
-                //Data array for cutomer
+                //Data array for cutomers
             $data = array(
                 'firstname' => $this->input->post('name'),
                 'lastname' => $this->input->post('lastname'),

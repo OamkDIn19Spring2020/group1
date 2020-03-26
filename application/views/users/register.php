@@ -1,10 +1,12 @@
 <h2><?= $title; ?></h2>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('customers/register'); ?>
+<?php echo form_open('users/register'); ?>
+
 <div class="container">
- <div class="jumbotron">
-    <div class="form-group">
+     <div class="row">
+         <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control" name="name" placeholder="Name">
     </div>
@@ -44,9 +46,10 @@
         <label>Confirm Password</label>
         <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
     </div>
+    </div>
  </div>
-</div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary"><a href="#">Register</a></button>
 
     
 <?php echo form_close(); ?>
