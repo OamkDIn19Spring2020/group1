@@ -80,9 +80,11 @@ CREATE TABLE productCategories (
 
 INSERT INTO productCategories (
 	idProductCategories,
-	name)
+	name,
+	idCategories)
 VALUES (
-	'1', 'Lamps');
+	'1', 'Lamps', '1'
+);
 
 CREATE TABLE products (
 	idProducts SMALLINT AUTO_INCREMENT,
@@ -91,7 +93,6 @@ CREATE TABLE products (
 	description VARCHAR(255),
 	image VARCHAR(255),
 	price INT,
-	quantity INT,
 	created TIMESTAMP,
 	idSellers SMALLINT,
 	PRIMARY KEY (idProducts),
@@ -104,20 +105,21 @@ INSERT INTO products (
 	title,
 	description,
 	price,
-	quantity,
 	idSellers)
 VALUES (
-	'1', 'Cool lamp', 'Almost new and rarely used cool lamp', '25', '1', '1'
+	'1', 'Cool lamp', 'Almost new and rarely used cool lamp', '25', '1'
 );
 
 CREATE TABLE orders (
 	idOrders SMALLINT AUTO_INCREMENT,
+	idProducts SMALLINT,
+	idSellers SMALLINT,
+	idCustomers SMALLINT,
 	status VARCHAR(20),
 	totalPrice INT,
-	idCustomers SMALLINT,
-	idSellers SMALLINT,
 	orderDate DATETIME,
 	PRIMARY KEY (idOrders),
+	FOREIGN KEY (idProducts) REFERENCES products(idProducts),
 	FOREIGN KEY (idCustomers) REFERENCES customers(idCustomers),
 	FOREIGN KEY (idSellers) REFERENCES sellers(idSellers)
 );
@@ -129,22 +131,6 @@ INSERT INTO orders (
 VALUES (
 	'Completed', '1', '1');
 
-CREATE TABLE orderDetails (
-	idOrders SMALLINT,
-	idProducts SMALLINT,
-	quantity INT,
-	singlePrice INT,
-	PRIMARY KEY (idOrders),
-	FOREIGN KEY (idProducts) REFERENCES products(idProducts)
-);
-
-INSERT INTO orderDetails (
-	idOrders,
-	idProducts,
-	quantity,
-	singlePrice)
-VALUES (
-	'1', '1', '1', '25');
 
 CREATE TABLE shoppingCart (
 	idShoppingCart SMALLINT AUTO_INCREMENT,
@@ -162,15 +148,3 @@ INSERT INTO shoppingCart (
 	totalPrice)
 VALUES (
 	'1', '1', '25');
-
-CREATE TABLE soldProducts (
-	idSoldProducts SMALLINT AUTO_INCREMENT,
-	idOrders SMALLINT,
-	PRIMARY KEY (idSoldProducts),
-	FOREIGN KEY (idOrders) REFERENCES orders(idOrders)
-);
-
-INSERT INTO soldProducts (
-	idOrders)
-VALUES (
-	'1');
