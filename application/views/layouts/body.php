@@ -4,7 +4,7 @@
          <ul class="side-nav">
             <li><a href="#">Home</a></li>
             <li><a href="#">Browse Products</a></li>
-            <li><a href="#">Add Products</a></li>
+            <li><a href="#">Sell Products</a></li>
             <li><a href="<?php echo base_url(); ?>users/login">Login</a></li>
             </ul>
         </nav>
