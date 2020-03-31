@@ -47,17 +47,55 @@ class Users extends CI_Controller {
 
         } else {
 
-            //Message shown once singed up
+            //Gets email for the login
+            $email = $this->input->post('email');
 
-            $this->session->set_flashdata('user_loggedin', 'Log in success');
+            //Gets encrypted password for the login
+            $password = md5($this->input->post('password'));
 
-            redirect('home');
+            //Login user
+            $user_id = $this->user_model->login($email, $password);
 
+            if($user_id){
+                //Session in progress
+                $user_data = array(
+                    'user_id' => $user_id,
+                    'email' => $email,
+                    'logged_in' => true
+                );
+
+                $this->session->set_userdata($user_data);
+
+                //Login success message
+                $this->session->set_flashdata('user_loggedin', 'Log in success');
+
+                redirect('home');
+            } else {
+
+                //Login failure message
+                $this->session->set_flashdata('login_failed', 'Log in failed');
+                redirect('users/login');
+
+            }
         }
+
+    }
+
+    //Logout user
+    public function logout(){
+
+        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('email');
+
+        //Logout message
+        $this->session->set_flashdata('user_loggedout', 'Logged out');
+
+        redirect('users/login');
     }
 
     //cheking if email exsists
-    function check_email_exists($email) {
+    public function check_email_exists($email) {
         $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
         
         if($this->customer_model->check_email_exists($email)) {
