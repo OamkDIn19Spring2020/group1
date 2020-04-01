@@ -148,3 +148,8 @@ INSERT INTO shoppingCart (
 	totalPrice)
 VALUES (
 	'1', '1', '25');
+
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'user_pass';
+
+
+GRANT ALL ON discovery.* TO 'user'@'localhost';
