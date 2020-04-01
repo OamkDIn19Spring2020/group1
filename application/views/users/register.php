@@ -46,6 +46,21 @@
         <label>Confirm Password</label>
         <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
     </div>
+    <fieldset class="form-group">
+      <legend>Customer or seller</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+          Customer
+        </label>
+      </div>
+      <div class="form-check">
+      <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          Seller
+        </label>
+      </div>
+    </fieldset>
     </div>
  </div>
     <button type="submit" class="btn btn-primary">Submit</button>
