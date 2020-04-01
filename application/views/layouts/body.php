@@ -1,3 +1,4 @@
+</div>
 <body>
      <div class="content">
          <nav class="sidebar">
