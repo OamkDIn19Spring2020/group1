@@ -54,12 +54,12 @@ class Users extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login user
-            $idCustomers = $this->User_model->login($email, $password);
+            $user_id = $this->User_model->login($email, $password);
 
-            if($idCustomers){
+            if($user_id){
                 //Session in progress
                 $user_data = array(
-                    'user_id' => $idCustomers,
+                    'user_id' => $user_id,
                     'email' => $email,
                     'logged_in' => true
                 );
@@ -98,7 +98,7 @@ class Users extends CI_Controller {
     public function check_email_exists($email) {
         $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
         
-        if($this->Users_model->check_email_exists($email)) {
+        if($this->customer_model->check_email_exists($email)) {
             return true;
         } else {
             return false;

@@ -21,7 +21,7 @@
         }
 
         //Log in user function
-        public function longin($email, $password){
+        public function login($email, $password){
 
             //Validation process
             $this->db->where('email', $email);

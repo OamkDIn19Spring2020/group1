@@ -1,5 +1,5 @@
 <?php
-    class Contents extends CI_Controller{
+    class Home extends CI_Controller{
         public function index(){
 
             $data['title'] = 'Page content';
