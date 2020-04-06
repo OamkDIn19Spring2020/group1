@@ -10,7 +10,7 @@
 <p class="text-muted d-flex justify-content-center">Where sellers and customers meet</p>
 
 <br></br>
-<h3 class="text-muted d-flex justify-content-center">User reviews</h3>
+<h3 class="text-muted d-flex justify-content-center">Our user reviews</h3>
 
 <br></br>
 <div class="container">
