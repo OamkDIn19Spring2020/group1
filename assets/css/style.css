@@ -1,0 +1,35 @@
+.navbar {
+    overflow: hidden;
+}
+
+.content {
+    background-color: white;
+    max-width: 120rem;
+    margin: 0.4rem auto;
+    display: flex;
+
+    
+    height: 60rem;
+}
+
+.sidebar {
+    background-color: #404040;
+    text-transform: uppercase;
+    flex: 0 0 15%;
+    text-decoration:none;
+
+}
+
+.side-nav {
+    margin-top: 2rem;
+}
+
+ul.side-nav {
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+.content-view {
+    background-color: whitesmoke;
+    flex: 1;
+}

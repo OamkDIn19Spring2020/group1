@@ -1,0 +1,11 @@
+                    </main>
+                </div>
+           </div>
+        </div>
+      <div class="container footer">
+         <br>
+      <p class="d-flex justify-content-center">&copy;OamkDIn19Spring2020</p>
+     <p class="d-flex justify-content-center">Joni Arstio, Venla Jokikokko & Väinö Kontkanen</p>
+   </div>
+ </body>
+</html>
