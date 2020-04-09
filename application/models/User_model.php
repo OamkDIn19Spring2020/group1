@@ -27,7 +27,7 @@
             $this->db->where('email', $email);
             $this->db->where('password', $password);
 
-            $result = $this->db->get('customers', 'sellers');
+            $result = $this->db->get('customers');
 
             if ($result->num_rows() === 1){
                 return $result->row(0)->id;
@@ -40,7 +40,7 @@
 
         // Cheking if email exists
         public function check_email_exists($email){
-            $query = $this->db->get_where('customers','sellers', array('email' => $email));
+            $query = $this->db->get_where('customers', array('email' => $email));
 
             if(empty($query->row_array())){
                 return true;

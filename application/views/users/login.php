@@ -11,6 +11,7 @@
         <input type="password" name="password" class="form-group" placeholder="Enter Password" required autofocus>
             </div>
         <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Register</button>
         </div>
     </div>
 <?php echo form_close(); ?>

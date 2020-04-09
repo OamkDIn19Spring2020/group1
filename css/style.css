@@ -32,14 +32,6 @@ ul.side-nav {
 .content-view {
     background-color: whitesmoke;
     flex: 1;
-}
-
-.content-view > .gallery {
     display: flex;
-    width: 100%;
 }
 
-.gallery > img {
-    height: 185px;
-    padding: 2px;
-}
