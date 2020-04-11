@@ -1,7 +1,7 @@
 <?php 
     class User_model extends CI_Model {
         public function register($enc_password){
-                //Data array for cutomers
+                //Data array for Users
             $data = array(
                 'firstname' => $this->input->post('name'),
                 'lastname' => $this->input->post('lastname'),
@@ -14,7 +14,7 @@
                 'password' => $enc_password
             );
 
-            //Insert register data to customer or sellers,
+            //Insert register data to customer or sellers tabel-
             //Need to addd if else statement to determine wich tabel data will go into.
 
             return $this->db->insert('customers', $data);
@@ -40,7 +40,7 @@
 
         // Cheking if email exists
         public function check_email_exists($email){
-            $query = $this->db->get_where('customers','sellers', array('email' => $email));
+            $query = $this->db->get_where('customers', array('email' => $email));
 
             if(empty($query->row_array())){
                 return true;

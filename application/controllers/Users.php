@@ -5,9 +5,10 @@ class Users extends CI_Controller {
         $data['title'] = 'Sign Up';
 
         $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('password2', 'Password Confirmation', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('password2', 'Confirm Password', 'matches[password]');
+        
 
         if($this->form_validation->run() === FALSE) {
             $this->load->view('layouts/header');
@@ -54,7 +55,7 @@ class Users extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login user
-            $user_id = $this->User_model->login($email, $password);
+            $user_id = $this->user_model->login($email, $password);
 
             if($user_id){
                 //Session in progress
@@ -98,7 +99,7 @@ class Users extends CI_Controller {
     public function check_email_exists($email) {
         $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
         
-        if($this->customer_model->check_email_exists($email)) {
+        if($this->user_model->check_email_exists($email)) {
             return true;
         } else {
             return false;
