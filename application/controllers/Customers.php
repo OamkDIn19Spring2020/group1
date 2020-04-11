@@ -1,7 +1,7 @@
 <?php
 //Registeration function
 class Customers extends CI_Controller {
-    public function register(){
+    public function register_customer(){
         $data['title'] = 'Sign up as customer';
 
         $this->form_validation->set_rules('name', 'Name', 'required');
@@ -9,7 +9,6 @@ class Customers extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('password2', 'Confirm Password', 'matches[password]');
         
-
         if($this->form_validation->run() === FALSE) {
             $this->load->view('layouts/header');
             $this->load->view('layouts/body');
@@ -20,7 +19,7 @@ class Customers extends CI_Controller {
             // Password encryption
             $enc_password = md5($this->input->post('password'));
 
-            $this->customer_model->register($enc_password);
+            $this->customer_model->register_customer($enc_password);
 
             //Message shown once singed up
             $this->session->set_flashdata('user_registered', 'Registartion succees you can now log in');
@@ -29,9 +28,8 @@ class Customers extends CI_Controller {
 
         }
     }
-
         //Login function
-        public function login(){
+        public function login_customer(){
         $data['title'] = 'Sing In';
 
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -52,7 +50,7 @@ class Customers extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login customer
-            $idCustomers = $this->customer_model->login($email, $password);
+            $idCustomers = $this->customer_model->login_customer($email, $password);
 
             if($idCustomers){
                 //Session in progress
@@ -76,11 +74,10 @@ class Customers extends CI_Controller {
 
             }
         }
-
     }
 
     //Logout user
-    public function logout(){
+    public function logout_customer(){
 
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('customer_id');
@@ -93,10 +90,10 @@ class Customers extends CI_Controller {
     }
 
     //cheking if email exsists
-    public function check_email_exists($email) {
+    public function check_email_exists_customer($email) {
         $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
         
-        if($this->customer_model->check_email_exists($email)) {
+        if($this->customer_model->check_email_exists_customer($email)) {
             return true;
         } else {
             return false;

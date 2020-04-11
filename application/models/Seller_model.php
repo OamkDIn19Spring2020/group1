@@ -1,6 +1,6 @@
 <?php 
     class Seller_model extends CI_Model {
-        public function register($enc_password){
+        public function register_seller($enc_password){
                 //Data array for Users
             $data = array(
                 'firstname' => $this->input->post('name'),
@@ -19,7 +19,7 @@
         }
 
         //Log in user function
-        public function login($email, $password){
+        public function login_seller($email, $password){
 
             //Validation process
             $this->db->where('email', $email);
@@ -35,7 +35,7 @@
         }
 
         // Cheking if seller email exists
-        public function check_email_exists($email){
+        public function check_email_exists_seller($email){
             $query = $this->db->get_where('sellers', array('email' => $email));
 
             if(empty($query->row_array())){

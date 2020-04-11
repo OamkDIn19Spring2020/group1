@@ -1,7 +1,7 @@
 <?php
 //Registeration function
 class Sellers extends CI_Controller {
-    public function register(){
+    public function register_seller(){
         $data['title'] = 'Sign up as seller';
 
         $this->form_validation->set_rules('name', 'Name', 'required');
@@ -20,7 +20,7 @@ class Sellers extends CI_Controller {
             // Password encryption
             $enc_password = md5($this->input->post('password'));
 
-            $this->seller_model->register($enc_password);
+            $this->seller_model->register_seller($enc_password);
 
             //Message shown once singed up
             $this->session->set_flashdata('user_registered', 'Registartion succees you can now log in');
@@ -31,7 +31,7 @@ class Sellers extends CI_Controller {
     }
 
         //Login function
-        public function login(){
+        public function login_seller(){
         $data['title'] = 'Sing In';
 
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -52,7 +52,7 @@ class Sellers extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login user
-            $idSellers = $this->seller_model->login($email, $password);
+            $idSellers = $this->seller_model->login_seller($email, $password);
 
             if($idSellers){
                 //Session in progress
@@ -80,7 +80,7 @@ class Sellers extends CI_Controller {
     }
 
     //Logout user
-    public function logout(){
+    public function logout_seller(){
 
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('seller_id');
@@ -93,10 +93,10 @@ class Sellers extends CI_Controller {
     }
 
     //cheking if email exsists
-    public function check_email_exists($email) {
+    public function check_email_exists_seller($email) {
         $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
         
-        if($this->seller_model->check_email_exists($email)) {
+        if($this->seller_model->check_email_exists_seller($email)) {
             return true;
         } else {
             return false;
