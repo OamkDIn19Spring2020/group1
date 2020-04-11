@@ -1,8 +1,8 @@
 <?php
 //Registeration function
-class Users extends CI_Controller {
+class Customers extends CI_Controller {
     public function register(){
-        $data['title'] = 'Sign Up';
+        $data['title'] = 'Sign up as customer';
 
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
@@ -13,19 +13,19 @@ class Users extends CI_Controller {
         if($this->form_validation->run() === FALSE) {
             $this->load->view('layouts/header');
             $this->load->view('layouts/body');
-            $this->load->view('users/register', $data);
+            $this->load->view('customers/register', $data);
             $this->load->view('layouts/footer');
 
         } else {
             // Password encryption
             $enc_password = md5($this->input->post('password'));
 
-            $this->user_model->register($enc_password);
+            $this->customer_model->register($enc_password);
 
             //Message shown once singed up
             $this->session->set_flashdata('user_registered', 'Registartion succees you can now log in');
 
-            redirect('users/login');
+            redirect('login');
 
         }
     }
@@ -52,7 +52,7 @@ class Users extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login user
-            $user_id = $this->user_model->login($email, $password);
+            $user_id = $this->customer_model->login($email, $password);
 
             if($user_id){
                 //Session in progress
@@ -72,7 +72,7 @@ class Users extends CI_Controller {
 
                 //Login failure message
                 $this->session->set_flashdata('login_failed', 'Log in failed');
-                redirect('users/login');
+                redirect('login');
 
             }
         }
@@ -96,7 +96,7 @@ class Users extends CI_Controller {
     public function check_email_exists($email) {
         $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
         
-        if($this->user_model->check_email_exists($email)) {
+        if($this->customer_model->check_email_exists($email)) {
             return true;
         } else {
             return false;

@@ -1,4 +1,4 @@
-<?php echo form_open('Users/login'); ?>
+<?php echo form_open('Customers/login'); ?>
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <h1 class="text-muted"><?php echo $title; ?></h1>

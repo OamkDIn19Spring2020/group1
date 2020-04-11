@@ -1,7 +1,7 @@
 <h2><?= $title; ?></h2>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('Users/register'); ?>
+<?php echo form_open('Customers/register'); ?>
 
 <div class="container">
      <div class="row">
@@ -46,25 +46,8 @@
         <label>Confirm Password</label>
         <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
     </div>
-    <fieldset class="form-group text-muted">
-      <legend>Customer or seller</legend>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadiosCustomer" id="optionsRadios1" value="option1" checked="">
-          Customer
-        </label>
-      </div>
-      <div class="form-check text-muted">
-      <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadiosSeller" id="optionsRadios2" value="option2">
-          Seller
-        </label>
-      </div>
-    </fieldset>
     </div>
  </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-    <button type="submit" class="btn btn-primary"><a href="#">Register</a></button>
-
     
 <?php echo form_close(); ?>
