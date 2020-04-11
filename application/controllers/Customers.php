@@ -40,34 +40,34 @@ class Customers extends CI_Controller {
         if($this->form_validation->run() === FALSE) {
             $this->load->view('layouts/header');
             $this->load->view('layouts/body');
-            $this->load->view('users/login', $data);
+            $this->load->view('login', $data);
             $this->load->view('layouts/footer');
 
         } else {
 
-            //Gets email for the login
+            //Gets customers email for the login
             $email = $this->input->post('email');
 
-            //Gets encrypted password for the login
+            //Gets customers encrypted password for the login
             $password = md5($this->input->post('password'));
 
-            //Login user
-            $user_id = $this->customer_model->login($email, $password);
+            //Login customer
+            $idCustomers = $this->customer_model->login($email, $password);
 
-            if($user_id){
+            if($idCustomers){
                 //Session in progress
-                $user_data = array(
-                    'user_id' => $user_id,
+                $customer_data = array(
+                    'customer_id' => $idCustomer,
                     'email' => $email,
                     'logged_in' => true
                 );
 
-                $this->session->set_userdata($user_data);
+                $this->session->set_userdata($customer_data);
 
                 //Login success message
                 $this->session->set_flashdata('user_loggedin', 'Log in success');
 
-                redirect('user/login');
+                redirect('login');
             } else {
 
                 //Login failure message
@@ -83,13 +83,13 @@ class Customers extends CI_Controller {
     public function logout(){
 
         $this->session->unset_userdata('logged_in');
-        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('customer_id');
         $this->session->unset_userdata('email');
 
         //Logout message
         $this->session->set_flashdata('user_loggedout', 'Logged out');
 
-        redirect('users/login');
+        redirect('pages/home');
     }
 
     //cheking if email exsists

@@ -1,4 +1,5 @@
-<?php echo form_open('Customers/login'); ?>
+<?php echo validation_errors(); ?>
+<?php echo form_open('login'); ?>
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <h1 class="text-muted"><?php echo $title; ?></h1>
@@ -11,7 +12,6 @@
         <input type="password" name="password" class="form-group" placeholder="Enter Password" required autofocus>
             </div>
         <button type="submit" class="btn btn-primary">Login</button>
-        <button type="submit" class="btn btn-primary">Register</button>
         </div>
     </div>
 <?php echo form_close(); ?>

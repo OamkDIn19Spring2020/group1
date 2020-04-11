@@ -52,17 +52,17 @@ class Sellers extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login user
-            $user_id = $this->seller_model->login($email, $password);
+            $idSellers = $this->seller_model->login($email, $password);
 
-            if($user_id){
+            if($idSellers){
                 //Session in progress
-                $user_data = array(
-                    'user_id' => $user_id,
+                $Seller_data = array(
+                    'seller_id' => $idSeller,
                     'email' => $email,
                     'logged_in' => true
                 );
 
-                $this->session->set_userdata($user_data);
+                $this->session->set_userdata($seller_data);
 
                 //Login success message
                 $this->session->set_flashdata('user_loggedin', 'Log in success');
@@ -83,13 +83,13 @@ class Sellers extends CI_Controller {
     public function logout(){
 
         $this->session->unset_userdata('logged_in');
-        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('seller_id');
         $this->session->unset_userdata('email');
 
         //Logout message
         $this->session->set_flashdata('user_loggedout', 'Logged out');
 
-        redirect('login');
+        redirect('home');
     }
 
     //cheking if email exsists

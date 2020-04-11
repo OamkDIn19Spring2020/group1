@@ -14,13 +14,11 @@
                 'password' => $enc_password
             );
 
-            //Insert register data to customer or sellers tabel-
-            //Need to addd if else statement to determine wich tabel data will go into.
-
+            //Insert register data to customer tabel
             return $this->db->insert('customers', $data);
         }
 
-        //Log in user function
+        //Log in customer function
         public function login($email, $password){
 
             //Validation process
@@ -30,11 +28,10 @@
             $result = $this->db->get('customers');
 
             if ($result->num_rows() === 1){
-                return $result->row(0)->id;
+                return $result->row(0)->idCustomers;
             } else {
                 return false;
             }
-
         }
 
         // Cheking if email exists

@@ -14,9 +14,7 @@
                 'password' => $enc_password
             );
 
-            //Insert register data to customer or sellers tabel-
-            //Need to addd if else statement to determine wich tabel data will go into.
-
+            //Insert register data to sellers tabel
             return $this->db->insert('sellers', $data);
         }
 
@@ -30,14 +28,13 @@
             $result = $this->db->get('sellers');
 
             if ($result->num_rows() === 1){
-                return $result->row(0)->id;
+                return $result->row(0)->idSellers;
             } else {
                 return false;
             }
-
         }
 
-        // Cheking if email exists
+        // Cheking if seller email exists
         public function check_email_exists($email){
             $query = $this->db->get_where('sellers', array('email' => $email));
 
