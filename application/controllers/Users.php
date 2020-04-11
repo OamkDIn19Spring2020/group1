@@ -18,22 +18,19 @@ class Users extends CI_Controller {
 
         } else {
             // Password encryption
-
             $enc_password = md5($this->input->post('password'));
 
             $this->user_model->register($enc_password);
 
             //Message shown once singed up
-
             $this->session->set_flashdata('user_registered', 'Registartion succees you can now log in');
 
-            redirect('home');
+            redirect('users/login');
 
         }
     }
 
         //Login function
-
         public function login(){
         $data['title'] = 'Sing In';
 
@@ -70,7 +67,7 @@ class Users extends CI_Controller {
                 //Login success message
                 $this->session->set_flashdata('user_loggedin', 'Log in success');
 
-                redirect('home');
+                redirect('user/login');
             } else {
 
                 //Login failure message

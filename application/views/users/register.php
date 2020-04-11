@@ -20,7 +20,7 @@
     </div>
     <div class="form-group text-muted">
         <label>Address</label>
-        <input type="text" class="form-control" name="address" placeholder="Streetaddress">
+        <input type="text" class="form-control" name="streetaddress" placeholder="Street address">
     </div>
     <div class="form-group text-muted">
         <label>Zipcode</label>
@@ -50,13 +50,13 @@
       <legend>Customer or seller</legend>
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+          <input type="radio" class="form-check-input" name="optionsRadiosCustomer" id="optionsRadios1" value="option1" checked="">
           Customer
         </label>
       </div>
       <div class="form-check text-muted">
       <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          <input type="radio" class="form-check-input" name="optionsRadiosSeller" id="optionsRadios2" value="option2">
           Seller
         </label>
       </div>
