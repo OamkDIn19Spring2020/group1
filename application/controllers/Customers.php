@@ -1,7 +1,7 @@
 <?php
 //Registeration function
 class Customers extends CI_Controller {
-    public function register_customer(){
+    public function register(){
         $data['title'] = 'Sign up as customer';
 
         $this->form_validation->set_rules('name', 'Name', 'required');
@@ -29,7 +29,7 @@ class Customers extends CI_Controller {
         }
     }
         //Login function
-        public function login_customer(){
+        public function login(){
         $data['title'] = 'Sing In';
 
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -50,7 +50,7 @@ class Customers extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login customer
-            $idCustomers = $this->customer_model->login_customer($email, $password);
+            $idCustomers = $this->customer_model->login($email, $password);
 
             if($idCustomers){
                 //Session in progress
@@ -77,7 +77,7 @@ class Customers extends CI_Controller {
     }
 
     //Logout user
-    public function logout_customer(){
+    public function logout(){
 
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('customer_id');
@@ -90,10 +90,10 @@ class Customers extends CI_Controller {
     }
 
     //cheking if email exsists
-    public function check_email_exists_customer($email) {
+    public function check_email_exists($email) {
         $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
         
-        if($this->customer_model->check_email_exists_customer($email)) {
+        if($this->customer_model->check_email_exists($email)) {
             return true;
         } else {
             return false;
