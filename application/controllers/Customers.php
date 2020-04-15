@@ -19,7 +19,7 @@ class Customers extends CI_Controller {
             // Password encryption
             $enc_password = md5($this->input->post('password'));
 
-            $this->customer_model->register_customer($enc_password);
+            $this->customer_model->register($enc_password);
 
             //Message shown once singed up
             $this->session->set_flashdata('user_registered', 'Registartion succees you can now log in');
@@ -61,10 +61,9 @@ class Customers extends CI_Controller {
                 );
 
                 $this->session->set_userdata($customer_data);
-
                 //Login success message
                 $this->session->set_flashdata('user_loggedin', 'Log in success');
-
+                
                 redirect('login');
             } else {
 

@@ -1,6 +1,6 @@
 <?php 
     class Customer_model extends CI_Model {
-        public function register_customer($enc_password){
+        public function register($enc_password){
                 //Data array for Users
             $data = array(
                 'firstname' => $this->input->post('name'),
@@ -19,7 +19,7 @@
         }
 
         //Log in customer function
-        public function login_customer($email, $password){
+        public function login($email, $password){
 
             //Validation process
             $this->db->where('email', $email);
@@ -35,7 +35,7 @@
         }
 
         // Cheking if email exists
-        public function check_email_exists_customer($email){
+        public function check_email_exists($email){
             $query = $this->db->get_where('customers', array('email' => $email));
 
             if(empty($query->row_array())){

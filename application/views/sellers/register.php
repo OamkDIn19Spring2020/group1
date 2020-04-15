@@ -1,4 +1,5 @@
-<h2><?= $title; ?></h2>
+<br></br>
+<h2 class="text-muted text-center"><?= $title; ?></h2>
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('sellers/register'); ?>
@@ -16,11 +17,11 @@
     </div>
     <div class="form-group text-muted">
         <label>Date of Birth</label>
-        <input type="text" class="form-control" name="dateofbirth" placeholder="Date of Birth">
+        <input type="text" class="form-control" name="dateofbirth" placeholder="YYYY/MM/DD">
     </div>
     <div class="form-group text-muted">
         <label>Address</label>
-        <input type="text" class="form-control" name="streetaddress" placeholder="Street address">
+        <input type="text" class="form-control" name="streetaddress" placeholder="Street Address">
     </div>
     <div class="form-group text-muted">
         <label>Zipcode</label>

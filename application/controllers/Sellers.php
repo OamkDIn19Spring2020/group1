@@ -56,7 +56,7 @@ class Sellers extends CI_Controller {
 
             if($idSellers){
                 //Session in progress
-                $Seller_data = array(
+                $seller_data = array(
                     'seller_id' => $idSeller,
                     'email' => $email,
                     'logged_in' => true
@@ -96,7 +96,7 @@ class Sellers extends CI_Controller {
     public function check_email_exists($email) {
         $this->form_validation->set_message('check_email_exists', 'This email has already been used.');
         
-        if($this->seller_model->check_email_exists_seller($email)) {
+        if($this->seller_model->check_email_exists($email)) {
             return true;
         } else {
             return false;
