@@ -9,8 +9,7 @@
             <li><a href="<?php echo base_url(); ?>users/login">Login</a></li>
             </ul>
         </nav>
-            <main class="content-view">
-
+        
         <?php if($this->session->flashdata('login_failed')): ?>
         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
         <?php endif; ?>
