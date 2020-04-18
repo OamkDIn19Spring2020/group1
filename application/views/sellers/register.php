@@ -1,9 +1,9 @@
 <div class="container d-inline-flex">
 <br></br>
-<h2 class="text-muted justify-content-center text-center"><?= $title; ?></h2>
+<h2 class="text-muted"><?= $title; ?></h2>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('Customers/register'); ?>
+<?php echo form_open('sellers/register'); ?>
 <br></br>
      <div class="row">
      <div class="d-flex flex-column bd-highlight mb-3">

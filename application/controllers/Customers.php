@@ -22,7 +22,7 @@ class Customers extends CI_Controller {
             $this->customer_model->register($enc_password);
 
             //Message shown once singed up
-            $this->session->set_flashdata('user_registered', 'Registartion succees you can now log in');
+            $this->session->set_flashdata('users_registered', 'Registartion succees you can now log in');
 
             redirect('login');
 
@@ -55,14 +55,14 @@ class Customers extends CI_Controller {
             if($idCustomers){
                 //Session in progress
                 $customer_data = array(
-                    'customer_id' => $idCustomer,
+                    'customer_id' => $idCustomers,
                     'email' => $email,
-                    'logged_in' => true
+                    'customer_logged_in' => true
                 );
 
                 $this->session->set_userdata($customer_data);
                 //Login success message
-                $this->session->set_flashdata('user_loggedin', 'Log in success');
+                $this->session->set_flashdata('users_loggedin', 'Log in success');
                 
                 redirect('login');
             } else {
@@ -78,12 +78,12 @@ class Customers extends CI_Controller {
     //Logout user
     public function logout(){
 
-        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('customer_logged_in');
         $this->session->unset_userdata('customer_id');
         $this->session->unset_userdata('email');
 
         //Logout message
-        $this->session->set_flashdata('user_loggedout', 'Logged out');
+        $this->session->set_flashdata('users_loggedout', 'Logged out');
 
         redirect('pages/home');
     }

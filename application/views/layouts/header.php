@@ -9,6 +9,9 @@
              <h1 class="navbar-brand">Discover Commerce</h1>
                <div class="shopping-cart">
                 <a href="#">Shopping cart</a>
+                <?php if($this->session->userdata('logged_in')) : ?>
+                <a href="<?php echo base_url(); ?>login">Log out</a>
+                <?php endif; ?>
                </div>
             </nav>
         </header>

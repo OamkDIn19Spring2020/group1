@@ -23,7 +23,7 @@ class Sellers extends CI_Controller {
             $this->seller_model->register($enc_password);
 
             //Message shown once singed up
-            $this->session->set_flashdata('user_registered', 'Registartion succees you can now log in');
+            $this->session->set_flashdata('users_registered', 'Registartion succees you can now log in');
 
             redirect('login');
 
@@ -52,20 +52,20 @@ class Sellers extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login user
-            $idSellers = $this->seller_model->login($email, $password);
+            $idSeller = $this->seller_model->login($email, $password);
 
-            if($idSellers){
+            if($idSeller){
                 //Session in progress
                 $seller_data = array(
                     'seller_id' => $idSeller,
                     'email' => $email,
-                    'logged_in' => true
+                    'seller_logged_in' => true
                 );
 
                 $this->session->set_userdata($seller_data);
 
                 //Login success message
-                $this->session->set_flashdata('user_loggedin', 'Log in success');
+                $this->session->set_flashdata('users_loggedin', 'Log in success');
 
                 redirect('login');
             } else {
@@ -82,12 +82,12 @@ class Sellers extends CI_Controller {
     //Logout user
     public function logout(){
 
-        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('sellers_logged_in');
         $this->session->unset_userdata('seller_id');
         $this->session->unset_userdata('email');
 
         //Logout message
-        $this->session->set_flashdata('user_loggedout', 'Logged out');
+        $this->session->set_flashdata('users_loggedout', 'Logged out');
 
         redirect('home');
     }
