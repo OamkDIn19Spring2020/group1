@@ -30,67 +30,66 @@ class Sellers extends CI_Controller {
         }
     }
 
-        //Login function
-        public function login(){
-        $data['title'] = 'Sing In';
-
-        $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-
-        if($this->form_validation->run() === FALSE) {
-            $this->load->view('layouts/header');
-            $this->load->view('layouts/body');
-            $this->load->view('login', $data);
-            $this->load->view('layouts/footer');
-
-        } else {
-
-            //Gets email for the login
-            $email = $this->input->post('email');
-
-            //Gets encrypted password for the login
-            $password = md5($this->input->post('password'));
-
-            //Login user
-            $idSeller = $this->seller_model->login($email, $password);
-
-            if($idSeller){
-                //Session in progress
-                $seller_data = array(
-                    'seller_id' => $idSeller,
-                    'email' => $email,
-                    'seller_logged_in' => true
-                );
-
-                $this->session->set_userdata($seller_data);
-
-                //Login success message
-                $this->session->set_flashdata('users_loggedin', 'Log in success');
-
-                redirect('login');
+          //Login function
+          public function login(){
+            $data['title'] = 'Sing In';
+    
+            $this->form_validation->set_rules('email', 'Email', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+    
+            if($this->form_validation->run() === FALSE) {
+                $this->load->view('layouts/header');
+                $this->load->view('layouts/body');
+                $this->load->view('login', $data);
+                $this->load->view('layouts/footer');
+    
             } else {
-
-                //Login failure message
-                $this->session->set_flashdata('login_failed', 'Log in failed');
-                redirect('login');
-
+    
+                //Gets customers email for the login
+                $email = $this->input->post('email');
+    
+                //Gets customers encrypted password for the login
+                $password = md5($this->input->post('password'));
+    
+                //Login customer
+                $idSellers = $this->seller_model->login($email, $password);
+    
+                if($idSellers){
+                    //Session in progress
+                    $seller_data = array(
+                        'customer_id' => $idSellers,
+                        'email' => $email,
+                        'seller_logged_in' => true
+                    );
+    
+                    $this->session->set_userdata($seller_data);
+                    //Login success message
+                    $this->session->set_flashdata('users_loggedin', 'Log in success');
+                    
+                    redirect('login');
+                } else {
+    
+                    //Login failure message
+                    $this->session->set_flashdata('login_failed', 'Log in failed');
+                    redirect('login');
+    
+                }
             }
         }
-
-    }
-
-    //Logout user
-    public function logout(){
-
-        $this->session->unset_userdata('sellers_logged_in');
-        $this->session->unset_userdata('seller_id');
-        $this->session->unset_userdata('email');
-
-        //Logout message
-        $this->session->set_flashdata('users_loggedout', 'Logged out');
-
-        redirect('home');
-    }
+    
+        //Logout user
+        public function logout(){
+    
+            $this->session->unset_userdata('customer_logged_in');
+            $this->session->unset_userdata('customer_id');
+            $this->session->unset_userdata('email');
+    
+            //Logout message
+            $this->session->set_flashdata('users_loggedout', 'Logged out');
+    
+            redirect('pages/home');
+        }
+    
 
     //cheking if email exsists
     public function check_email_exists($email) {
