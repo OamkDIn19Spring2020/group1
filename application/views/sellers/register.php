@@ -1,12 +1,12 @@
+<div class="container d-inline-flex">
 <br></br>
-<h2 class="text-muted text-center"><?= $title; ?></h2>
+<h2 class="text-muted justify-content-center text-center"><?= $title; ?></h2>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('sellers/register'); ?>
-
-<div class="container">
+<?php echo form_open('Customers/register'); ?>
+<br></br>
      <div class="row">
-         <div class="col-md-4 col-md-offset-4">
+     <div class="d-flex flex-column bd-highlight mb-3">
         <div class="form-group text-muted">
         <label>Name</label>
         <input type="text" class="form-control" name="name" placeholder="Name">
@@ -48,7 +48,7 @@
         <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
     </div>
     </div>
- </div>
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-    
+</div>
 <?php echo form_close(); ?>
