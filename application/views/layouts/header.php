@@ -7,11 +7,11 @@
         <header class="header">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
              <h1 class="navbar-brand">Discover Commerce</h1>
-               <div class="shopping-cart">
-                <a href="#">Shopping cart</a>
-                <?php if($this->session->userdata('logged_in')) : ?>
+             <?php if($this->session->userdata('logged_in_customer')) : ?>
                 <a href="<?php echo base_url(); ?>login">Log out</a>
                 <?php endif; ?>
+               <div class="shopping-cart">
+                <a href="#">Shopping cart</a>
                </div>
             </nav>
         </header>

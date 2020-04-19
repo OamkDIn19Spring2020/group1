@@ -40,7 +40,7 @@ class Sellers extends CI_Controller {
             if($this->form_validation->run() === FALSE) {
                 $this->load->view('layouts/header');
                 $this->load->view('layouts/body');
-                $this->load->view('login', $data);
+                $this->load->view('sellers/login', $data);
                 $this->load->view('layouts/footer');
     
             } else {
@@ -57,9 +57,9 @@ class Sellers extends CI_Controller {
                 if($idSellers){
                     //Session in progress
                     $seller_data = array(
-                        'customer_id' => $idSellers,
+                        'seller_id' => $idSellers,
                         'email' => $email,
-                        'seller_logged_in' => true
+                        'logged_in' => true
                     );
     
                     $this->session->set_userdata($seller_data);
@@ -80,14 +80,14 @@ class Sellers extends CI_Controller {
         //Logout user
         public function logout(){
     
-            $this->session->unset_userdata('customer_logged_in');
-            $this->session->unset_userdata('customer_id');
+            $this->session->unset_userdata('logged_in');
+            $this->session->unset_userdata('seller_id');
             $this->session->unset_userdata('email');
     
             //Logout message
-            $this->session->set_flashdata('users_loggedout', 'Logged out');
+            $this->session->set_flashdata('seller_loggedout', 'Logged out');
     
-            redirect('pages/home');
+            redirect('home');
         }
     
 

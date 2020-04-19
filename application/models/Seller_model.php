@@ -28,7 +28,7 @@
             $result = $this->db->get('sellers');
 
             if ($result->num_rows() == 1){
-                return $result->row(0)->id;
+                return $result->row(0)->idSellers;
             } else {
                 return false;
             }

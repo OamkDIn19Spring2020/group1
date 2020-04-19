@@ -1,6 +1,6 @@
 <div class="container d-inline-flex">
 <br></br>
-<h2 class="text-muted justify-content-center"><?= $title; ?></h2>
+<h2 class="text-muted"><?= $title; ?></h2>
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('Customers/register'); ?>
