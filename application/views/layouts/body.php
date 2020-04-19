@@ -1,6 +1,5 @@
 <body>
-     <div class="content">
-     <div class="d-flex p-2 bd-highlight">
+    <div class="content">
          <nav class="sidebar">
          <ul class="side-nav">
             <li><a href="<?php echo base_url(); ?>pages/home">Home</a></li><br>
@@ -10,9 +9,9 @@
             <li><a href="<?php echo base_url(); ?>Register">Register</a></li>
             </ul>
         </nav>
-     </div>
-        <main class="content-view">
 
+        <div class="content">
+       
         <div class="container">
             <?php if($this->session->flashdata('users_registered')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('users_registered').'</p>'; ?>
