@@ -21,6 +21,7 @@
 
 .side-nav {
     margin-top: 1rem;
+    display: flex;
 }
 
 ul.side-nav {
