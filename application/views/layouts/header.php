@@ -16,5 +16,3 @@
             </nav>
         </header>
     </nav>
-
-    <div class="container">

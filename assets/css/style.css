@@ -1,14 +1,15 @@
+
+.content {
+    background-color: white;
+    max-width: 120rem;
+    margin: 0.4rem auto;
+    display: flex;
+}
+
 .navbar {
     overflow: hidden;
 }
 
-.content {
-    max-width: 120rem;
-    margin: 0.4rem auto;
-    background-color: whitesmoke;
-    flex: 1;
-  
-}
 
 .sidebar {
     background-color: #404040;
@@ -19,12 +20,15 @@
 }
 
 .side-nav {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 ul.side-nav {
+    list-style: none;
     font-size: 1.2rem;
-    text-decoration: none;
 }
 
-
+.content-view {
+    background-color: whitesmoke;
+    flex: 1;
+}

@@ -1,4 +1,3 @@
-</div>
 <body>
      <div class="content">
          <nav class="sidebar">
@@ -10,9 +9,9 @@
             <li><a href="<?php echo base_url(); ?>Register">Register</a></li>
             </ul>
         </nav>
-            
-        <div class="container">
+        <main class="content-view">
 
+        <div class="container">
             <?php if($this->session->flashdata('users_registered')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('users_registered').'</p>'; ?>
             <?php endif; ?>
@@ -28,7 +27,8 @@
             <?php if($this->session->flashdata('users_loggedout')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('users_loggedout').'</p>'; ?>
             <?php endif; ?>
-
+        </div>
+       
                     
                     
           
