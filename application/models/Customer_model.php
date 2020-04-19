@@ -19,7 +19,7 @@
         }
 
         //Log in customer function
-        public function login($email, $password){
+        public function login_customer($email, $password){
 
             //Validation process
             $this->db->where('email', $email);

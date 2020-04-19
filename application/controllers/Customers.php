@@ -29,7 +29,7 @@ class Customers extends CI_Controller {
         }
     }
         //Login function
-        public function login(){
+        public function login_customer(){
         $data['title'] = 'Sing In';
 
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -50,7 +50,7 @@ class Customers extends CI_Controller {
             $password = md5($this->input->post('password'));
 
             //Login customer
-            $idCustomers = $this->customer_model->login($email, $password);
+            $idCustomers = $this->Customer_model->login_customer($email, $password);
 
             if($idCustomers){
                 //Session in progress
@@ -76,7 +76,7 @@ class Customers extends CI_Controller {
     }
 
     //Logout user
-    public function logout(){
+    public function logout_customer(){
 
         $this->session->unset_userdata('customer_logged_in');
         $this->session->unset_userdata('customer_id');
@@ -85,7 +85,7 @@ class Customers extends CI_Controller {
         //Logout message
         $this->session->set_flashdata('users_loggedout', 'Logged out');
 
-        redirect('pages/home');
+        redirect('login');
     }
 
     //cheking if email exsists
