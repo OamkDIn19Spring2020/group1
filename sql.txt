@@ -1,0 +1,26 @@
+CREATE DATABASE ci_example;
+USE ci_example;
+
+CREATE TABLE book(
+id_book INT primary key auto_increment,
+name VARCHAR(255),
+author VARCHAR(255)
+);
+
+INSERT INTO book(name,author) VALUES('PHP Basic','Bob Jones');
+INSERT INTO book(name,author) VALUES('Statistics','Lisa Smith');
+
+
+GRANT ALL on ci_example.* to 'ci_user'@'localhost' IDENTIFIED BY 'ci_pass';
+
+//MYSQL 8
+CREATE USER 'root'@'%' IDENTIFIED BY 'test';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+//QUIT->LOGIN
+CREATE USER 'ci_user'@'localhost' IDENTIFIED BY 'ci_pass';
+GRANT ALL on ci_example.* to 'ci_user'@'localhost';
+
+CREATE TABLE user(
+username VARCHAR(20) primary key,
+password VARCHAR(255)
+);
