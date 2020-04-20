@@ -1,11 +1,12 @@
-<h2><?= $title; ?></h2>
+<div class="container d-inline-flex">
+<br></br>
+<h2 class="text-muted"><?= $title; ?></h2>
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('Users/register'); ?>
-
-<div class="container">
+<?php echo form_open('Customers/register'); ?>
+<br></br>
      <div class="row">
-         <div class="col-md-4 col-md-offset-4">
+     <div class="d-flex flex-column bd-highlight mb-3">
         <div class="form-group text-muted">
         <label>Name</label>
         <input type="text" class="form-control" name="name" placeholder="Name">
@@ -16,11 +17,11 @@
     </div>
     <div class="form-group text-muted">
         <label>Date of Birth</label>
-        <input type="text" class="form-control" name="dateofbirth" placeholder="Date of Birth">
+        <input type="text" class="form-control" name="dateofbirth" placeholder="YYYY/MM/DD">
     </div>
     <div class="form-group text-muted">
         <label>Address</label>
-        <input type="text" class="form-control" name="address" placeholder="Streetaddress">
+        <input type="text" class="form-control" name="streetaddress" placeholder="Street Address">
     </div>
     <div class="form-group text-muted">
         <label>Zipcode</label>
@@ -46,24 +47,10 @@
         <label>Confirm Password</label>
         <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
     </div>
-    <fieldset class="form-group text-muted">
-      <legend>Customer or seller</legend>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-          Customer
-        </label>
-      </div>
-      <div class="form-check">
-      <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-          Seller
-        </label>
-      </div>
-    </fieldset>
     </div>
- </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-    
+    </div>
+    <div class="wrapper">
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
+</div>
 <?php echo form_close(); ?>
