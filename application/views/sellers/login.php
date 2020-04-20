@@ -12,13 +12,8 @@
         <div class="form-group">
         <input type="password" name="password" class="form-group" placeholder="Enter Password" required autofocus>
             </div>
-<<<<<<< HEAD:application/views/sellers/login.php
         <button type="submit" class="btn btn-primary btn-block">Login</button>
         </div>  
-=======
-        <button type="submit" class="btn btn-primary">Login</button>
-        <button type="submit" class="btn btn-primary">Register</button>
->>>>>>> home:application/views/users/login.php
         </div>
     </div>
 </div>

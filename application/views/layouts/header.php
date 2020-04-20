@@ -18,10 +18,6 @@
                </div>
             </nav>
         </header>
-<<<<<<< HEAD
-    </nav>
-=======
     </nav>
 
     <div class="container">
->>>>>>> home
