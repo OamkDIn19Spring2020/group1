@@ -59,7 +59,7 @@ class Sellers extends CI_Controller {
                     $seller_data = array(
                         'seller_id' => $idSellers,
                         'email' => $email,
-                        'logged_in' => true
+                        'logged_in_seller' => true
                     );
     
                     $this->session->set_userdata($seller_data);
@@ -80,14 +80,14 @@ class Sellers extends CI_Controller {
         //Logout user
         public function logout(){
     
-            $this->session->unset_userdata('logged_in');
+            $this->session->unset_userdata('logged_in_seller');
             $this->session->unset_userdata('seller_id');
             $this->session->unset_userdata('email');
     
             //Logout message
-            $this->session->set_flashdata('seller_loggedout', 'Logged out');
+            $this->session->set_flashdata('users_loggedout', 'Logged out');
     
-            redirect('home');
+            redirect('sellers/login');
         }
     
 

@@ -1,6 +1,6 @@
 <div class="container">
 <br></br>
-<h2 class="text-muted text-center">Are you joinign us as a cutomer or as a seller?</h2>
+<h2 class="text-muted text-center">Choose login form</h2>
     <br></br>
     <div class="btn-register text-center">
         <button type="submit" class="btn btn-outline-primary btn-lg"><a href="<?php echo base_url(); ?>customers/register">Register as customer</button>

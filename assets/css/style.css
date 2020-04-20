@@ -1,15 +1,16 @@
+.navbar {
+    overflow: hidden;
+}
 
 .content {
     background-color: white;
     max-width: 120rem;
     margin: 0.4rem auto;
     display: flex;
-}
 
-.navbar {
-    overflow: hidden;
+    
+    height: 60rem;
 }
-
 
 .sidebar {
     background-color: #404040;
@@ -20,8 +21,7 @@
 }
 
 .side-nav {
-    margin-top: 1rem;
-    display: flex;
+    margin-top: 2rem;
 }
 
 ul.side-nav {
@@ -33,4 +33,3 @@ ul.side-nav {
     background-color: whitesmoke;
     flex: 1;
 }
-

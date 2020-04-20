@@ -9,8 +9,8 @@
             <li><a href="<?php echo base_url(); ?>Register">Register</a></li>
             </ul>
         </nav>
-
-        <div class="content">
+        
+        <div class="content-view">
        
         <div class="container">
             <?php if($this->session->flashdata('users_registered')): ?>

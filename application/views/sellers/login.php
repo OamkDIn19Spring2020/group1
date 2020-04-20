@@ -1,3 +1,4 @@
+<div class="container d-inline-flex">
 <?php echo form_open('sellers/login'); ?>
   <br></br>
     <div class="row">
@@ -11,10 +12,9 @@
         <div class="form-group">
         <input type="password" name="password" class="form-group" placeholder="Enter Password" required autofocus>
             </div>
-        <div class="wrapper">
         <button type="submit" class="btn btn-primary btn-block">Login</button>
         </div>  
-</div>
+        </div>
     </div>
 </div>
 <?php echo form_close(); ?>
