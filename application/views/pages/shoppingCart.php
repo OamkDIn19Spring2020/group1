@@ -1,1 +1,0 @@
-<h2 class="text-muted">Shopping Cart</h2>
