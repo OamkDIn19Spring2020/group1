@@ -5,6 +5,7 @@
             <li><a href="<?php echo base_url(); ?>">Home</a></li><br>
             <li><a href="#">Browse Products</a></li><br>
             <li><a href="<?php echo site_url('create/show_items'); ?>">Sell Products</a></li><br>
+            <li><a href="#">Sell Products</a></li><br>
             <li><a href="<?php echo base_url(); ?>login">Login</a></li><br>
             <li><a href="<?php echo base_url(); ?>Register">Register</a></li>
             </ul>
