@@ -13,7 +13,7 @@ class Create extends CI_Controller{
     $data['items']=$this->Create_model->getItems();
     //print_r($data);
     $data['page']='item/show';
-    $this->load->view('menu/content',$data);
+    $this->load->view('layouts/content',$data);
   }
 
   public function insert_item(){
@@ -43,13 +43,13 @@ class Create extends CI_Controller{
       $data['message']='You can not update this item';
       $data['return_url']='show_items';
       $data['page']='feedback/message_box';
-      $this->load->view('menu/content',$data);
+      $this->load->view('layouts/content',$data);
     }
     else{
       $data['message']='Item updated succesfully';
       $data['return_url']='show_items';
       $data['page']='feedback/message_box';
-      $this->load->view('menu/content',$data);
+      $this->load->view('layouts/content',$data);
     }
   }
 
@@ -60,13 +60,13 @@ class Create extends CI_Controller{
       $data['message']='You can not delete this product';
       $data['return_url']='show_items';
       $data['page']='feedback/message_box';
-      $this->load->view('menu/content',$data);
+      $this->load->view('layouts/content',$data);
     }
     else{
       $data['message']='Product deleted succesfully';
       $data['return_url']='show_items';
       $data['page']='feedback/message_box';
-      $this->load->view('menu/content',$data);
+      $this->load->view('layouts/content',$data);
       }
     }
 }
