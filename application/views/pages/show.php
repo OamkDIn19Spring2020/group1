@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 <div class="text-muted">
->>>>>>> b1a0d74019456f2e01f90a898a658af25ca619bf
 <h2>Create listing</h2>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New Item</button>
 <table class="table">
