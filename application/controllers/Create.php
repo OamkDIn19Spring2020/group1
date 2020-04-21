@@ -54,8 +54,8 @@ class Create extends CI_Controller{
   }
 
   public function delete_item(){
-    $id_book=$this->input->post('idProducts');
-    $test=$this->Create_model->deleteItem($id_book);
+    $id=$this->input->post('idProducts');
+    $test=$this->Create_model->deleteItem($id);
     if($test==0){
       $data['message']='You can not delete this product';
       $data['return_url']='show_items';

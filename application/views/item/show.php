@@ -18,10 +18,10 @@
     foreach ($items as $row) {
     echo '<tr>';
     echo '<td>'.$row['idProducts'].'</td><td>'.$row['idProductCategories'].'</td><td>'.$row['title'].'</td><td>'.$row['description'].'</td><td>'.$row['price'].'</td><td>'.$row['image'].'</td>';
-    echo '<td><button type="button" id="editBtn" class="btn btn-primary myBtn" data-toggle="modal" data-target="#editModal" data-idProducts="'.$row['idProducts'].'" data-idProductCategories="'.$row['idProductCategories'].'" data-title="'.$row['title'].'" data-description="'.$row['description'].'" data-price="'.$row['price'].'" data-image="'.$row['image'].'">
+    echo '<td><button type="button" id="editBtn" class="btn btn-primary myBtn" data-toggle="modal" data-target="#editModal" data-id="'.$row['idProducts'].'" data-title="'.$row['title'].'" data-description="'.$row['description'].'" data-price="'.$row['price'].'" data-image="'.$row['image'].'">
         Edit
       </button></td>';
-    echo '<td><button type="button" id="deleteBtn" class="btn btn-danger myBtn" data-toggle="modal" data-target="#deleteModal" data-idProducts="'.$row['idProducts'].'" data-idProductCategories="'.$row['idProductCategories'].'" data-title="'.$row['title'].'" data-description="'.$row['description'].'" data-price="'.$row['price'].'" data-image="'.$row['image'].'">
+    echo '<td><button type="button" id="deleteBtn" class="btn btn-danger myBtn" data-toggle="modal" data-target="#deleteModal" data-id="'.$row['idProducts'].'" data-idProductCategories="'.$row['idProductCategories'].'" data-title="'.$row['title'].'" data-description="'.$row['description'].'" data-price="'.$row['price'].'" data-image="'.$row['image'].'">
         Delete
       </button></td>';
     echo '</tr>';
@@ -43,8 +43,8 @@
                 <form class="" action="<?php echo site_url('create/insert_item'); ?>" method="post">
                   <div class="form-group">
                     
-                    <!--<label for="idProductCategories">Item category</label> <br>-->
-                    <input type="hidden" id="idProductCategories" name="idProductCategories" value=""> <br>
+                    <label for="idProductCategories">Item category</label> <br>
+                    <input type="text" id="idProductCategories" name="idProductCategories" value=""> <br>
 
                     <label for="title">Item title</label> <br>
                     <input type="text" id="title" name="title" value=""> <br>
@@ -58,7 +58,8 @@
                     <label for="image">Image</label> <br>
                     <input type="text" id="image" name="image" value=""> <br>
 
-                    <input type="hidden" id="idSellers" name="idSellers" value=""> <br>
+                    <label for="idSellers">Seller ID</label> <br>
+                    <input type="text" id="idSellers" name="idSellers" value=""> <br>
                   </div>
                   <input type="submit" class="btn btn-primary" name="" value="Add">
                 </form>
@@ -84,8 +85,8 @@
                         <div class="form-group">
                           <input type="hidden" id="edit_idProducts" name="idProducts" value="" >
                           
-                          <label for="name">Title</label> <br>
-                          <input type="text" id="name" name="name" value=""> <br>
+                          <label for="edit_title">Title</label> <br>
+                          <input type="text" id="edit_title" name="title" value=""> <br>
 
                           <label for="edit_description">Description</label> <br>
                           <input type="text" id="edit_description" name="description" value=""> <br>
@@ -108,7 +109,7 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title">Delete a Item</h5>
+                          <h5 class="modal-title">Delete Item</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
@@ -117,7 +118,6 @@
                             <form class="" action="<?php echo site_url('create/delete_item'); ?>" method="post">
                               <div class="form-group">
                                 <input type="hidden" id="delete_idProducts" name="idProducts" value="" >
-                                <input type="hidden" id="delete_idProductsCategories" name="idProductsCategories" value="" >
                                 Do you really want to delete this item?<br><br>
                                 
                                 <label for="delete_title">Title</label> <br>
@@ -128,10 +128,6 @@
 
                                 <label for="delete_price">Price</label> <br>
                                 <input type="text" id="delete_price" name="price" value="" disabled> <br>
-
-                                <label for="delete_image">Image</label> <br>
-                                <input type="text" id="delete_image" name="image" value="" disabled> <br>
-
                               </div>
                               <input type="submit" class="btn btn-danger " name="" value="Delete">
                             </form>
@@ -145,13 +141,13 @@
             <script>
               $(document).on( "click", '#editBtn',function() {
                   console.log("Update modal open");
-                  var id_item = $(this).data('idProducts');
+                  var idProducts = $(this).data('id');
                   var description = $(this).data('description');
                   var title=$(this).data('title');
                   var price=$(this).data('price');
-                  console.log('idProducts = '+id_item);
+                  console.log('idProducts = '+idProducts);
 
-                  $("#edit_idProducts").val(id_item);
+                  $("#edit_idProducts").val(idProducts);
                   $("#edit_description").val(description);
                   $("#edit_title").val(title);
                   $("#edit_price").val(price);
@@ -159,16 +155,14 @@
 
               $(document).on( "click", '#deleteBtn',function() {
                   console.log("delete modal open");
-                  var id_item = $(this).data('idProducts');
-                  var id_category = $(this).data('idProductsCategories');
+                  var idProducts = $(this).data('id');
                   var title = $(this).data('title');
                   var description = $(this).data('description');
                   var image = $(this).data('image');
                   var price = $(this).data('price');
-                  console.log('idProducts = '+id_item);
+                  console.log('idProducts = '+idProducts);
 
-                  $("#delete_idProducts").val(id_item);
-                  $("#delete_idProductsCategories").val(id_category);
+                  $("#delete_idProducts").val(idProducts);
                   $("#delete_title").val(title);
                   $("#delete_description").val(description);
                   $("#delete_price").val(price);
