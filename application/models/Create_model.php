@@ -18,14 +18,14 @@ class Create_model extends CI_Model{
     return $this->db->affected_rows();
   }
 
-  public function updateItem($id_item, $update_data){
-      $this->db->where('idProducts',$id_item);
-      $this->db->update('products',$update_data);
+  public function updateItem($id, $update_data){
+      $this->db->where('idProducts',$id);
+      $this->db->update('products', $update_data);
       return $this->db->affected_rows();
   }
   
-  public function deleteItem($id_item){
-    $this->db->where('idProducts',$id_item);
+  public function deleteItem($id){
+    $this->db->where('idProducts',$id);
     $this->db->delete('products');
     return $this->db->affected_rows();
   }

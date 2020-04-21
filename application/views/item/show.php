@@ -42,8 +42,9 @@
             <div class="modal-body">
                 <form class="" action="<?php echo site_url('create/insert_item'); ?>" method="post">
                   <div class="form-group">
-                    <label for="idProductCategories">Item category</label> <br>
-                    <input type="text" id="idProductCategories" name="idProductCategories" value=""> <br>
+                    
+                    <!--<label for="idProductCategories">Item category</label> <br>-->
+                    <input type="hidden" id="idProductCategories" name="idProductCategories" value=""> <br>
 
                     <label for="title">Item title</label> <br>
                     <input type="text" id="title" name="title" value=""> <br>
@@ -83,14 +84,14 @@
                         <div class="form-group">
                           <input type="hidden" id="edit_idProducts" name="idProducts" value="" >
                           
-                          <label for="edit_title">Title</label> <br>
-                          <input type="text" id="edit_title" name="title" value=""> <br>
+                          <label for="name">Title</label> <br>
+                          <input type="text" id="name" name="name" value=""> <br>
 
                           <label for="edit_description">Description</label> <br>
                           <input type="text" id="edit_description" name="description" value=""> <br>
 
                           <label for="edit_price">Price</label> <br>
-                          <input type="text" id="edit_price" name="description" value=""> <br>
+                          <input type="text" id="edit_price" name="price" value=""> <br>
                         
                         </div>
                         <input type="submit" class="btn btn-primary" name="" value="Update">
@@ -116,6 +117,7 @@
                             <form class="" action="<?php echo site_url('create/delete_item'); ?>" method="post">
                               <div class="form-group">
                                 <input type="hidden" id="delete_idProducts" name="idProducts" value="" >
+                                <input type="hidden" id="delete_idProductsCategories" name="idProductsCategories" value="" >
                                 Do you really want to delete this item?<br><br>
                                 
                                 <label for="delete_title">Title</label> <br>
@@ -123,6 +125,12 @@
 
                                 <label for="delete_description">Description</label> <br>
                                 <input type="text" id="delete_description" name="description" value="" disabled> <br>
+
+                                <label for="delete_price">Price</label> <br>
+                                <input type="text" id="delete_price" name="price" value="" disabled> <br>
+
+                                <label for="delete_image">Image</label> <br>
+                                <input type="text" id="delete_image" name="image" value="" disabled> <br>
 
                               </div>
                               <input type="submit" class="btn btn-danger " name="" value="Delete">
@@ -152,12 +160,18 @@
               $(document).on( "click", '#deleteBtn',function() {
                   console.log("delete modal open");
                   var id_item = $(this).data('idProducts');
+                  var id_category = $(this).data('idProductsCategories');
+                  var title = $(this).data('title');
                   var description = $(this).data('description');
-                  var title=$(this).data('title');
+                  var image = $(this).data('image');
+                  var price = $(this).data('price');
                   console.log('idProducts = '+id_item);
 
                   $("#delete_idProducts").val(id_item);
-                  $("#delete_description").val(description);
+                  $("#delete_idProductsCategories").val(id_category);
                   $("#delete_title").val(title);
+                  $("#delete_description").val(description);
+                  $("#delete_price").val(price);
+                  $("#delete_image").val(image);
               });
               </script>

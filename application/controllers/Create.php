@@ -24,19 +24,21 @@ class Create extends CI_Controller{
       'price'=>$this->input->post('price'),
       'image'=>$this->input->post('image')
     );
+    $this->db->set('created', 'NOW()', FALSE);
+    $this->db->insert('products', $data);
     $test=$this->Create_model->addItem($insert_data);
     //echo 'inserted '.$test. 'items';
     redirect('create/show_items');
   }
 
   public function edit_item(){
-    $id_item=$this->input->post('idProducts');
+    $id=$this->input->post('idProducts');
     $update_data=array(
       'title'=>$this->input->post('title'),
       'description'=>$this->input->post('description'),
       'price'=>$this->input->post('price')
     );
-    $test=$this->Create_model->updateItem($id_item, $update_data);
+    $test=$this->Create_model->updateItem($id, $update_data);
     if($test==0){
       $data['message']='You can not update this item';
       $data['return_url']='show_items';
@@ -51,20 +53,20 @@ class Create extends CI_Controller{
     }
   }
 
-    public function delete_item(){
-      $id_item=$this->input->post('idProducts');
-      $test=$this->Create_model->deleteItem($id_item);
-      if($test==0){
-        $data['message']='You can not delete this item';
-        $data['return_url']='show_items';
-        $data['page']='feedback/message_box';
-        $this->load->view('menu/content',$data);
-      }
-      else{
-        $data['message']='Item deleted succesfully';
-        $data['return_url']='show_items';
-        $data['page']='feedback/message_box';
-        $this->load->view('menu/content',$data);
+  public function delete_item(){
+    $id_book=$this->input->post('idProducts');
+    $test=$this->Create_model->deleteItem($id_book);
+    if($test==0){
+      $data['message']='You can not delete this product';
+      $data['return_url']='show_items';
+      $data['page']='feedback/message_box';
+      $this->load->view('menu/content',$data);
+    }
+    else{
+      $data['message']='Product deleted succesfully';
+      $data['return_url']='show_items';
+      $data['page']='feedback/message_box';
+      $this->load->view('menu/content',$data);
       }
     }
 }
