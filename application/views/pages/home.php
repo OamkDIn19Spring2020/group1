@@ -1,9 +1,9 @@
 <div class="container">
 <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
-    <img src="assets/images/photograph-1.jpg" class="p-2 h-180 bd-highlight" alt="Photograph 2" style="height: 240px;">
-    <img src="assets/images/photograph-2.jpg" class="p-2 h-180 bd-highlight" alt="Photograph 2" style="height: 240px;">
-    <img src="assets/images/photograph-3.jpg" class="p-2 h-180 bd-highlight" alt="Photograph 3" style="height: 240px;">
-    <img src="assets/images/photograph-4.jpg" class="p-2 h-180 bd-highlight" alt="Photograph 4" style="height: 240px;">
+    <img src="assets/images/photograph-1.jpg" class="p-2 h-180 bd-highlight" alt="Photograph 2" style="height: 160px;">
+    <img src="assets/images/photograph-2.jpg" class="p-2 h-180 bd-highlight" alt="Photograph 2" style="height: 160px;">
+    <img src="assets/images/photograph-3.jpg" class="p-2 h-180 bd-highlight" alt="Photograph 3" style="height: 160px;">
+    <img src="assets/images/photograph-4.jpg" class="p-2 h-180 bd-highlight" alt="Photograph 4" style="height: 160px;">
 </div>
 <br></br>
 <h2 class="text-muted d-flex justify-content-center">Welcome to Discover Commerce</h2>
