@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route['create'] = 'create/index';
 $route['home'] = 'pages/home';
 $route['default_controller'] = 'pages/view';
 $route['(:any)'] = 'pages/view/$1';
