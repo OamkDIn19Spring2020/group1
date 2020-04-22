@@ -18,7 +18,6 @@ class Create_model extends CI_Model{
   }
    
 
-
   public function addItem($insert_data){
     $this->db->insert('products',$insert_data);
     return $this->db->affected_rows();

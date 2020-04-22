@@ -6,8 +6,7 @@ class Create extends CI_Controller{
   public function index(){
     $data['title'] = 'Create listing';
 
-    $data['products'] = $this->create_model->get_items();
-    print_r($data['products']);
+    $data['items'] = $this->create_model->get_items();
 
     $this->load->view('layouts/header');
     $this->load->view('layouts/body');
@@ -27,7 +26,7 @@ class Create extends CI_Controller{
     $this->db->insert('products', $data);
     $test=$this->create_model->addItem($insert_data);
     //echo 'inserted '.$test. 'items';
-    redirect('show');
+    redirect('create/index');
   }
 
   public function edit_item(){
@@ -44,16 +43,16 @@ class Create extends CI_Controller{
       $data['page']='feedback/message_box';
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
-      $this->load->view('create', $data);
+      $this->load->view('create/index', $data);
       $this->load->view('layouts/footer');
     }
     else{
       $data['message']='Item updated succesfully';
-      $data['return_url']='show';
+      $data['return_url']='create/index';
       $data['page']='feedback/message_box';
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
-      $this->load->view('create', $data);
+      $this->load->view('create/index', $data);
       $this->load->view('layouts/footer');
     }
   }
@@ -63,20 +62,20 @@ class Create extends CI_Controller{
     $test=$this->create_model->deleteItem($id);
     if($test==0){
       $data['message']='You can not delete this product';
-      $data['return_url']='show';
+      $data['return_url']='create/index';
       $data['page']='feedback/message_box';
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
-      $this->load->view('create', $data);
+      $this->load->view('create/index', $data);
       $this->load->view('layouts/footer');
     }
     else{
       $data['message']='Product deleted succesfully';
-      $data['return_url']='show';
+      $data['return_url']='create/index';
       $data['page']='feedback/message_box';
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
-      $this->load->view('create', $data);
+      $this->load->view('create/index', $data);
       $this->load->view('layouts/footer');
       }
     }

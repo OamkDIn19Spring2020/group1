@@ -1,5 +1,5 @@
 <div class="text-muted">
-<h2><?= $title ?></h2> 
+<h3>Add Listing</h3>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New Item</button>
 <table class="table">
   <thead>
@@ -17,11 +17,6 @@
   <tbody>
     <?php
 
-function getList () {
-  return false;
-}
-$myList = getList();
-    if (is_array($myList) || is_object($myList)) {
     foreach ($items as $row) {
     echo '<tr>';
     echo '<td>'.$row['idProducts'].'</td><td>'.$row['idProductCategories'].'</td><td>'.$row['title'].'</td><td>'.$row['description'].'</td><td>'.$row['price'].'</td><td>'.$row['image'].'</td>';
@@ -33,7 +28,6 @@ $myList = getList();
       </button></td>';
     echo '</tr>';
     }
-  }
     ?>
   </tbody>
 </table>
