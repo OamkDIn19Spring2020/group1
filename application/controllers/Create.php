@@ -45,13 +45,19 @@ class Create extends CI_Controller{
       $data['message']='You can not update this item';
       $data['return_url']='show_items';
       $data['page']='feedback/message_box';
-      $this->load->view('layouts/content',$data);
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/body');
+      $this->load->view('create', $data);
+      $this->load->view('layouts/footer');
     }
     else{
       $data['message']='Item updated succesfully';
       $data['return_url']='show_items';
       $data['page']='feedback/message_box';
-      $this->load->view('layouts/content',$data);
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/body');
+      $this->load->view('create', $data);
+      $this->load->view('layouts/footer');
     }
   }
 
@@ -62,13 +68,19 @@ class Create extends CI_Controller{
       $data['message']='You can not delete this product';
       $data['return_url']='show_items';
       $data['page']='feedback/message_box';
-      $this->load->view('layouts/content',$data);
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/body');
+      $this->load->view('create', $data);
+      $this->load->view('layouts/footer');
     }
     else{
       $data['message']='Product deleted succesfully';
       $data['return_url']='show_items';
       $data['page']='feedback/message_box';
-      $this->load->view('layouts/content',$data);
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/body');
+      $this->load->view('create', $data);
+      $this->load->view('layouts/footer');
       }
     }
 }

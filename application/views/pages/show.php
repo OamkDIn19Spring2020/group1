@@ -21,7 +21,7 @@ function getList () {
   return false;
 }
 $myList = getList();
-if (is_array($myList) || is_object($myList)) {
+    if (is_array($myList) || is_object($myList)) {
     foreach ($items as $row) {
     echo '<tr>';
     echo '<td>'.$row['idProducts'].'</td><td>'.$row['idProductCategories'].'</td><td>'.$row['title'].'</td><td>'.$row['description'].'</td><td>'.$row['price'].'</td><td>'.$row['image'].'</td>';
