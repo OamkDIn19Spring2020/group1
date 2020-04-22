@@ -1,9 +1,8 @@
-<div class="text-muted">
 <h2>Create listing</h2>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New Item</button>
 <table class="table">
   <thead>
-    <tr class="text-muted">
+    <tr>
       <th>id</th>
       <th>Category</th>
       <th>Title</th>
@@ -16,12 +15,6 @@
   </thead>
   <tbody>
     <?php
-
-function getList () {
-  return false;
-}
-$myList = getList();
-if (is_array($myList) || is_object($myList)) {
     foreach ($items as $row) {
     echo '<tr>';
     echo '<td>'.$row['idProducts'].'</td><td>'.$row['idProductCategories'].'</td><td>'.$row['title'].'</td><td>'.$row['description'].'</td><td>'.$row['price'].'</td><td>'.$row['image'].'</td>';
@@ -33,7 +26,6 @@ if (is_array($myList) || is_object($myList)) {
       </button></td>';
     echo '</tr>';
     }
-  }
     ?>
   </tbody>
 </table>
@@ -177,4 +169,3 @@ if (is_array($myList) || is_object($myList)) {
                   $("#delete_image").val(image);
               });
               </script>
-            </div>
