@@ -1,5 +1,5 @@
 <div class="text-muted">
-<h2>Create listing</h2>
+<h2>Create listing</h2> 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New Item</button>
 <table class="table">
   <thead>

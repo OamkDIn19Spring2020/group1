@@ -30,7 +30,7 @@ class Create extends CI_Controller{
     $this->db->insert('products', $data);
     $test=$this->Create_model->addItem($insert_data);
     //echo 'inserted '.$test. 'items';
-    redirect('create/show_items');
+    redirect('show');
   }
 
   public function edit_item(){
@@ -43,7 +43,7 @@ class Create extends CI_Controller{
     $test=$this->Create_model->updateItem($id, $update_data);
     if($test==0){
       $data['message']='You can not update this item';
-      $data['return_url']='show_items';
+      $data['return_url']='show';
       $data['page']='feedback/message_box';
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
@@ -52,7 +52,7 @@ class Create extends CI_Controller{
     }
     else{
       $data['message']='Item updated succesfully';
-      $data['return_url']='show_items';
+      $data['return_url']='show';
       $data['page']='feedback/message_box';
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
@@ -66,7 +66,7 @@ class Create extends CI_Controller{
     $test=$this->Create_model->deleteItem($id);
     if($test==0){
       $data['message']='You can not delete this product';
-      $data['return_url']='show_items';
+      $data['return_url']='show';
       $data['page']='feedback/message_box';
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
@@ -75,7 +75,7 @@ class Create extends CI_Controller{
     }
     else{
       $data['message']='Product deleted succesfully';
-      $data['return_url']='show_items';
+      $data['return_url']='show';
       $data['page']='feedback/message_box';
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
