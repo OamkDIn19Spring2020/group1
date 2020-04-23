@@ -12,7 +12,13 @@ class Create extends CI_Controller{
     $this->load->view('layouts/body');
     $this->load->view('create/index', $data);
     $this->load->view('layouts/footer');
+
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model('Create_model');
   }
+
 
   public function insert_item(){
     //print_r($this->input->post());
@@ -76,7 +82,7 @@ class Create extends CI_Controller{
       $this->load->view('layouts/header');
       $this->load->view('layouts/body');
       $this->load->view('create/index', $data);
-      $this->load->view('layouts/footer');
+      $this->load->view('layouts/footer');s
       }
     }
 }

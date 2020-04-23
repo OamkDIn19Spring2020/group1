@@ -17,7 +17,6 @@ class Create_model extends CI_Model{
     return $query->row_array();
   }
    
-
   public function addItem($insert_data){
     $this->db->insert('products',$insert_data);
     return $this->db->affected_rows();
@@ -34,5 +33,5 @@ class Create_model extends CI_Model{
     $this->db->delete('products');
     return $this->db->affected_rows();
   }
-
 }
+
