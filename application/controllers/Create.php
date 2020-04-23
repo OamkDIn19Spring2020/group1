@@ -3,18 +3,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Create extends CI_Controller{
 
+  public function index(){
+    $data['title'] = 'Create listing';
+
+    $data['items'] = $this->create_model->get_items();
+
+    $this->load->view('layouts/header');
+    $this->load->view('layouts/body');
+    $this->load->view('create/index', $data);
+    $this->load->view('layouts/footer');
+
   public function __construct()
   {
     parent::__construct();
     $this->load->model('Create_model');
   }
 
-  public function show_items(){
-    $data['items']=$this->Create_model->getItems();
-    //print_r($data);
-    $data['page']='item/show';
-    $this->load->view('layouts/content',$data);
-  }
 
   public function insert_item(){
     //print_r($this->input->post());
@@ -26,9 +30,9 @@ class Create extends CI_Controller{
     );
     $this->db->set('created', 'NOW()', FALSE);
     $this->db->insert('products', $data);
-    $test=$this->Create_model->addItem($insert_data);
+    $test=$this->create_model->addItem($insert_data);
     //echo 'inserted '.$test. 'items';
-    redirect('create/show_items');
+    redirect('create/index');
   }
 
   public function edit_item(){
@@ -38,35 +42,47 @@ class Create extends CI_Controller{
       'description'=>$this->input->post('description'),
       'price'=>$this->input->post('price')
     );
-    $test=$this->Create_model->updateItem($id, $update_data);
+    $test=$this->create_model->updateItem($id, $update_data);
     if($test==0){
       $data['message']='You can not update this item';
-      $data['return_url']='show_items';
+      $data['return_url']='show';
       $data['page']='feedback/message_box';
-      $this->load->view('layouts/content',$data);
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/body');
+      $this->load->view('create/index', $data);
+      $this->load->view('layouts/footer');
     }
     else{
       $data['message']='Item updated succesfully';
-      $data['return_url']='show_items';
+      $data['return_url']='create/index';
       $data['page']='feedback/message_box';
-      $this->load->view('layouts/content',$data);
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/body');
+      $this->load->view('create/index', $data);
+      $this->load->view('layouts/footer');
     }
   }
 
   public function delete_item(){
     $id=$this->input->post('idProducts');
-    $test=$this->Create_model->deleteItem($id);
+    $test=$this->create_model->deleteItem($id);
     if($test==0){
       $data['message']='You can not delete this product';
-      $data['return_url']='show_items';
+      $data['return_url']='create/index';
       $data['page']='feedback/message_box';
-      $this->load->view('layouts/content',$data);
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/body');
+      $this->load->view('create/index', $data);
+      $this->load->view('layouts/footer');
     }
     else{
       $data['message']='Product deleted succesfully';
-      $data['return_url']='show_items';
+      $data['return_url']='create/index';
       $data['page']='feedback/message_box';
-      $this->load->view('layouts/content',$data);
+      $this->load->view('layouts/header');
+      $this->load->view('layouts/body');
+      $this->load->view('create/index', $data);
+      $this->load->view('layouts/footer');s
       }
     }
 }
