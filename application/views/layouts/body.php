@@ -4,7 +4,7 @@
          <ul class="side-nav">
             <li><a href="<?php echo base_url(); ?>">Home</a></li><br>
             <li><a href="#">Browse Products</a></li><br>
-            <li><a href="#">Sell Products</a></li><br>
+            <li><a href="<?php echo base_url(); ?>create">Sell Products</a></li><br>
             <li><a href="<?php echo base_url(); ?>login">Login</a></li><br>
             <li><a href="<?php echo base_url(); ?>Register">Register</a></li>
             </ul>
@@ -27,6 +27,18 @@
 
             <?php if($this->session->flashdata('users_loggedout')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('users_loggedout').'</p>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('added')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('added').'</p>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('edited')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('edited').'</p>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('deleted')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('deleted').'</p>'; ?>
             <?php endif; ?>
         </div>
        

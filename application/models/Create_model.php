@@ -3,16 +3,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Create_model extends CI_Model{
 
-  public function __construct()
-  {
-    parent::__construct();
+  public function __construct(){
+    $this->load->database();
   }
-
-  public function getItems(){
+  
+  public function get_items() {
     $this->db->select('*');
     $this->db->from('products');
+    $this->db->where('idSellers', '1');
     return $this->db->get()->result_array();
   }
+
+  /*public function get_items($idProducts = FALSE) {
+    if($idProducts === FALSE) {
+      $query = $this->db->get('products');
+      return $query->result_array();
+    }
+    $query = $this->get_where('products', array('idProducts' => $idProducts));
+    return $query->row_array();
+  }*/
+   
   public function addItem($insert_data){
     $this->db->insert('products',$insert_data);
     return $this->db->affected_rows();
@@ -30,3 +40,4 @@ class Create_model extends CI_Model{
     return $this->db->affected_rows();
   }
 }
+
