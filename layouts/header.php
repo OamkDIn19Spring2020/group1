@@ -11,7 +11,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
              <h1 class="navbar-brand">Discover Commerce</h1>
                <div class="shopping-cart">
-                <a href="<?php echo base_url(); ?>shoppingCart">"></a>
+                <a href="#">Shopping cart</a>
                </div>
             </nav>
         </header>
