@@ -27,6 +27,10 @@
         Delete
       </button></td>';
     echo '</tr>';
+    echo '<td><button type="button" id="addBtn" class="btn btn-success myBtn" data-toggle="modal" data-target="#addModal" data-id="'.$row['idProducts'].'" data-idProductCategories="'.$row['idProductCategories'].'" data-title="'.$row['title'].'" data-description="'.$row['description'].'" data-price="'.$row['price'].'" data-image="'.$row['image'].'">
+    Add to cart
+  </button></td>';
+echo '</tr>';
     }
     ?>
   </tbody>
@@ -170,5 +174,14 @@
                   $("#delete_price").val(price);
                   $("#delete_image").val(image);
               });
+
+              $(document).ready(function(){
+                $('.addBtn').click(function(){
+                    var shoppingcart_id = $(this).data("idShoppingCart");
+                    var product_id = $(this).data("idProducts");                
+                    var customer_id = $(this).data("idCustomers");
+                    var price_id = $(this).data("totalPrice");
+              }
+              }
               </script>
             </div>

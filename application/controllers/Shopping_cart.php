@@ -6,7 +6,7 @@ class Shopping_cart extends CI_Controller {
     function index()
     {
         $this->load->model("shopping_cart_model");
-        $data["idProducts"] = $this->shopping_cart_model->fecth_all();
+        $data['shoppingcart'] = $this->shopping_cart_model->fecth_all();
         $this->load->view('layouts/header');
         $this->load->view('layouts/body');
         $this->load->view('shopping_cart', $data);
