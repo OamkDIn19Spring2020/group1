@@ -6,7 +6,7 @@ class Create_model extends CI_Model{
   public function __construct(){
     $this->load->database();
   }
-  
+ 
   public function get_items() {
     $this->db->select('*');
     $this->db->from('products');
@@ -22,7 +22,7 @@ class Create_model extends CI_Model{
     $query = $this->get_where('products', array('idProducts' => $idProducts));
     return $query->row_array();
   }*/
-   
+    
   public function addItem($insert_data){
     $this->db->insert('products',$insert_data);
     return $this->db->affected_rows();
@@ -40,4 +40,3 @@ class Create_model extends CI_Model{
     return $this->db->affected_rows();
   }
 }
-

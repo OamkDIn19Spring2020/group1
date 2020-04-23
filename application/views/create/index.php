@@ -28,7 +28,6 @@
       </button></td>';
     echo '</tr>';
     }
-  
     ?>
   </tbody>
 </table>
