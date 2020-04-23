@@ -22,7 +22,7 @@ class Customers extends CI_Controller {
             $this->customer_model->register($enc_password);
 
             //Message shown once singed up
-            $this->session->set_flashdata('users_registered', 'Registartion succees you can now log in');
+            $this->session->set_flashdata('users_registered', 'Registration success, you can now login');
 
             redirect('login');
 
@@ -30,7 +30,7 @@ class Customers extends CI_Controller {
     }
         //Login function
         public function login(){
-        $data['title'] = 'Sing In';
+        $data['title'] = 'Sign In';
 
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -62,13 +62,13 @@ class Customers extends CI_Controller {
 
                 $this->session->set_userdata($customer_data);
                 //Login success message
-                $this->session->set_flashdata('users_loggedin', 'Log in success');
+                $this->session->set_flashdata('users_loggedin', 'Login success');
                 
                 redirect('login');
             } else {
 
                 //Login failure message
-                $this->session->set_flashdata('login_failed', 'Log in failed');
+                $this->session->set_flashdata('login_failed', 'Login failed');
                 redirect('login');
 
             }

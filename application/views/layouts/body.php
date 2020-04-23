@@ -28,6 +28,18 @@
             <?php if($this->session->flashdata('users_loggedout')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('users_loggedout').'</p>'; ?>
             <?php endif; ?>
+
+            <?php if($this->session->flashdata('added')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('added').'</p>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('edited')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('edited').'</p>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('deleted')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('deleted').'</p>'; ?>
+            <?php endif; ?>
         </div>
        
                     
