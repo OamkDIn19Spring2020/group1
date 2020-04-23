@@ -15,9 +15,9 @@
     </tr>
   </thead>
   <tbody>
-    <?php
+  <?php
 
-    foreach ($items as $row) {
+  foreach ($items as $row) {
     echo '<tr>';
     echo '<td>'.$row['idProducts'].'</td><td>'.$row['idProductCategories'].'</td><td>'.$row['title'].'</td><td>'.$row['description'].'</td><td>'.$row['price'].'</td><td>'.$row['image'].'</td>';
     echo '<td><button type="button" id="editBtn" class="btn btn-primary myBtn" data-toggle="modal" data-target="#editModal" data-id="'.$row['idProducts'].'" data-title="'.$row['title'].'" data-description="'.$row['description'].'" data-price="'.$row['price'].'" data-image="'.$row['image'].'">

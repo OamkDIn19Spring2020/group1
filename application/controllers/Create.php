@@ -2,36 +2,41 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Create extends CI_Controller{
-
+  
   public function index(){
     $data['title'] = 'Create listing';
-
+    $data['items'] = $this->create_model->get_items();
+    
+  public function index(){
+    $data['title'] = 'Create listing';
     $data['items'] = $this->create_model->get_items();
 
     $this->load->view('layouts/header');
     $this->load->view('layouts/body');
     $this->load->view('create/index', $data);
     $this->load->view('layouts/footer');
-
-  public function __construct()
-  {
-    parent::__construct();
-    $this->load->model('Create_model');
+    
   }
-
-
-  public function insert_item(){
-    //print_r($this->input->post());
-    $insert_data=array(
-      'title'=>$this->input->post('title'),
-      'description'=>$this->input->post('description'),
-      'price'=>$this->input->post('price'),
-      'image'=>$this->input->post('image')
+    public function insert_item(){
+      $this->load->helper('date');
+      date_default_timezone_set('Europe/Helsinki');
+        $currentDate =time();
+        $datestring = '%Y-%m-%d - %h:%i %a';
+        $time = time();
+        $better_date= mdate($datestring, $time).'<br>';
+        $c_date=date("Y-m-d H:i:s").'<br>';
+        $insert_data=array(
+          'title'=>$this->input->post('title'),
+          'description'=>$this->input->post('description'),
+          'price'=>$this->input->post('price'),
+          'image'=>$this->input->post('image'),
+          'created'=>$c_date
     );
-    $this->db->set('created', 'NOW()', FALSE);
+    $this->db->set('created', 'NOW()' FALSE);
     $this->db->insert('products', $data);
+    $this->create_model->addItem($insert_data);
+    $this->session->set_flashdata('added', 'Product added successfully');
     $test=$this->create_model->addItem($insert_data);
-    //echo 'inserted '.$test. 'items';
     redirect('create/index');
   }
 
@@ -42,47 +47,15 @@ class Create extends CI_Controller{
       'description'=>$this->input->post('description'),
       'price'=>$this->input->post('price')
     );
-    $test=$this->create_model->updateItem($id, $update_data);
-    if($test==0){
-      $data['message']='You can not update this item';
-      $data['return_url']='show';
-      $data['page']='feedback/message_box';
-      $this->load->view('layouts/header');
-      $this->load->view('layouts/body');
-      $this->load->view('create/index', $data);
-      $this->load->view('layouts/footer');
-    }
-    else{
-      $data['message']='Item updated succesfully';
-      $data['return_url']='create/index';
-      $data['page']='feedback/message_box';
-      $this->load->view('layouts/header');
-      $this->load->view('layouts/body');
-      $this->load->view('create/index', $data);
-      $this->load->view('layouts/footer');
-    }
+    $this->create_model->updateItem($id, $update_data);
+    $this->session->set_flashdata('edited', 'Product edit successfully');
+    redirect('create/index');
   }
 
   public function delete_item(){
     $id=$this->input->post('idProducts');
-    $test=$this->create_model->deleteItem($id);
-    if($test==0){
-      $data['message']='You can not delete this product';
-      $data['return_url']='create/index';
-      $data['page']='feedback/message_box';
-      $this->load->view('layouts/header');
-      $this->load->view('layouts/body');
-      $this->load->view('create/index', $data);
-      $this->load->view('layouts/footer');
-    }
-    else{
-      $data['message']='Product deleted succesfully';
-      $data['return_url']='create/index';
-      $data['page']='feedback/message_box';
-      $this->load->view('layouts/header');
-      $this->load->view('layouts/body');
-      $this->load->view('create/index', $data);
-      $this->load->view('layouts/footer');s
-      }
-    }
+    $this->create_model->deleteItem($id);
+    $this->session->set_flashdata('deleted', 'Product deleted successfully');
+    redirect('create/index');
+  }
 }

@@ -23,7 +23,7 @@ class Sellers extends CI_Controller {
             $this->seller_model->register($enc_password);
 
             //Message shown once singed up
-            $this->session->set_flashdata('users_registered', 'Registartion succees you can now log in');
+            $this->session->set_flashdata('users_registered', 'Registration success, you can now login');
 
             redirect('login');
 
@@ -64,13 +64,13 @@ class Sellers extends CI_Controller {
     
                     $this->session->set_userdata($seller_data);
                     //Login success message
-                    $this->session->set_flashdata('users_loggedin', 'Log in success');
+                    $this->session->set_flashdata('users_loggedin', 'Login success');
                     
                     redirect('login');
                 } else {
     
                     //Login failure message
-                    $this->session->set_flashdata('login_failed', 'Log in failed');
+                    $this->session->set_flashdata('login_failed', 'Login failed');
                     redirect('login');
     
                 }

@@ -6,17 +6,23 @@ class Create_model extends CI_Model{
   public function __construct(){
     $this->load->database();
   }
-  
-  public function get_items($idProducts = FALSE) {
+ 
+  public function get_items() {
+    $this->db->select('*');
+    $this->db->from('products');
+    $this->db->where('idSellers', '1');
+    return $this->db->get()->result_array();
+  }
+
+  /*public function get_items($idProducts = FALSE) {
     if($idProducts === FALSE) {
       $query = $this->db->get('products');
       return $query->result_array();
     }
-
     $query = $this->get_where('products', array('idProducts' => $idProducts));
     return $query->row_array();
-  }
-   
+  }*/
+    
   public function addItem($insert_data){
     $this->db->insert('products',$insert_data);
     return $this->db->affected_rows();
@@ -34,4 +40,3 @@ class Create_model extends CI_Model{
     return $this->db->affected_rows();
   }
 }
-
