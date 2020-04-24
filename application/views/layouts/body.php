@@ -3,7 +3,7 @@
          <nav class="sidebar">
          <ul class="side-nav">
             <li><a href="<?php echo base_url(); ?>">Home</a></li><br>
-            <li><a href="#">Browse Products</a></li><br>
+            <li><a href="<?php echo base_url(); ?>browse">Browse Products</a></li><br>
             <li><a href="<?php echo base_url(); ?>create">Sell Products</a></li><br>
             <li><a href="<?php echo base_url(); ?>login">Login</a></li><br>
             <li><a href="<?php echo base_url(); ?>Register">Register</a></li>

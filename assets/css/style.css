@@ -15,7 +15,7 @@
 .sidebar {
     background-color: #404040;
     text-transform: uppercase;
-    flex: 0 0 18%;
+    flex: 0 0 15%;
     text-decoration:none;
 
 }
@@ -32,6 +32,4 @@ ul.side-nav {
 .content-view {
     background-color: whitesmoke;
     flex: 1;
-    display: flex;
 }
-
