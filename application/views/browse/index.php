@@ -1,5 +1,5 @@
 <div class="text-muted">
-<h3>Browse Products</h3>
+<h3><?= $title ?></h3>
 <table class="table">
   <thead>
     <tr class="text-muted">
@@ -35,7 +35,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                      <form class="" action="<?php echo site_url('ADD TO BASKET'); ?>" method="post">
+                      <form class="" action="<?php echo site_url('shoppingcart'); ?>" method="post">
                         <div class="form-group">
                           <input type="hidden" id="buy_idProducts" name="idProducts" value="" >
                           
@@ -49,7 +49,7 @@
                           <input type="text" id="buy_price" name="price" value=""> <br>
                         
                         </div>
-                        <input type="submit" class="btn btn-success" name="" value="Buy">
+                        <input type="submit" id="btn_buy" class="btn btn-success" name="" value="Buy">
                       </form>
                   </div>
                   <div class="modal-footer">
@@ -71,6 +71,35 @@
                   $("#buy_description").val(description);
                   $("#buy_title").val(title);
                   $("#buy_price").val(price);
+              });
+
+              $(document).ready(function(){
+
+                $('.btn_buy').click(function(){
+                  var idProducts = $(this).data('id');
+                  var description = $(this).data('description');
+                  var title=$(this).data('title');
+                  var price=$(this).data('price');
+                  if(idProducts != '' && idProducts > 0)
+                  {
+                      $.ajax({
+                        url:"<?php echo base_url(); ?>shoppingcart/add",
+                        method: "POST",
+                        data:{idProducts:idProducts, description:description, title:titile,
+                        price:price},
+                        success:function(data)
+                        {
+                          alert("Product added to cart");
+                          $('#cart_details').html(data);
+                        }
+                      });
+                  }
+                  else
+                  {
+                    alert("No items to add");
+                  }
+
+                });
               });
               </script>
             </div>

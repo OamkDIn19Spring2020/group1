@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route['shoppingcart'] = 'shoppingcart/index';
 $route['home'] = 'pages/home';
 $route['create'] = 'create/index/$1';
 $route['browse'] = 'browse/index/$1';
