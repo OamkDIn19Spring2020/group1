@@ -15,7 +15,7 @@
 </div>
 
 <script>
-            /*$(document).ready(function(){
+            $(document).ready(function(){
               $('.add_cart').click(function(){
               var idProducts    = $(this).data("idProducts");
               var description  = $(this).data("title");
@@ -31,7 +31,7 @@
                 }
               });
             });
-          });*/
+          });
 
           $('#detail_cart').load("<?php echo site_url('shoppingcart/load_cart');?>");
 

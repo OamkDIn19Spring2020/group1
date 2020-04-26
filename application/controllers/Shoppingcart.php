@@ -16,12 +16,9 @@ class Shoppingcart extends CI_Controller {
     
     public function add_to_cart(){
 
-        $this->load->library('cart');
-
         $data = array(
             'title' => $this->input->post('title'),
             'idProducts' => $this->input->post('idProducts'),
-            'idCustomers' => $this->input->post('idCustomers'),
             'price' => $this->input->post('price'),
         );
 

@@ -76,18 +76,10 @@
               $(document).ready(function(){
               $('.add_cart').click(function(){
               var idProducts    = $(this).data("idProducts");
-              var description  = $(this).data("title");
-              var title = $(this).data("price");
+              var title  = $(this).data("title");
+              var price = $(this).data("price");
               var price = $('#' + idProducts).val();
 
-              $.ajax({
-              url : "<?php echo site_url('shoppingcart/add_to_cart');?>",
-              method : "POST",
-              data : {idProducts: idProducts, title: title, price: price, totalPrice: totalPrice},
-              success: function(data){
-              $('#detail_cart').html(data);
-                }
-              });
             });
 });
 </script>
