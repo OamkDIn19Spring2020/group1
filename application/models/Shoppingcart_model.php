@@ -1,6 +1,11 @@
 <?php
 
 class Shoppingcart_model extends CI_Model{
+    function get_all_product(){
+    $result=$this->db->get('products');
+    return $result;
+
+/*class Shoppingcart_model extends CI_Model{
     public function __construct(){
         $this->load->database();
 }   
@@ -12,7 +17,7 @@ class Shoppingcart_model extends CI_Model{
 
     }
     $query = $this->db->get_where('shoppingcart', array('idProducts' => $idProducts ));
-        return $query->row_array();
+        return $query->row_array();*/
         
         
     }
