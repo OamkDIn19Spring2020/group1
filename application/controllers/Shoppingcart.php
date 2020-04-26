@@ -3,17 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Shoppingcart extends CI_Controller {
 
-    function index(){
+    public function index(){
         $data['title'] = 'Shopping cart';
+        $data['items'] = $this->shoppingcart_model->get_items();
 
-        $data['data']=$this->shoppingcart_model->get_all_products();
+       
         $this->load->view('layouts/header');
         $this->load->view('layouts/body');
         $this->load->view('shoppingcart/index', $data);
         $this->load->view('layouts/footer');
     }
     
-    function add_to_cart(){
+    public function add_to_cart(){
 
         $this->load->library('cart');
 
@@ -29,10 +30,8 @@ class Shoppingcart extends CI_Controller {
 
         }
 
-        function show_cart(){
+        public function show_cart(){
 
-            $this->load->library('cart');
-        
             $output = '';
             $no = 0;
         
@@ -63,7 +62,7 @@ class Shoppingcart extends CI_Controller {
         echo $this->show_cart();
         }
 
-        function delete_cart(){
+        public function delete_cart(){
         $data = array(
         'rowid' => $this->input->post('row_id'),
         );

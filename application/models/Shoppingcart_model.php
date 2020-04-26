@@ -1,30 +1,19 @@
 <?php
 
     class Shoppingcart_model extends CI_Model{
-
-     public function __construct(){
-        $this->load->database();
-
-     }
-     
-    function get_all_products(){
-    $result=$this->db->get('shoppingcart');
-    return $result;
-
-    /*class Shoppingcart_model extends CI_Model{
     public function __construct(){
         $this->load->database();
 }   
 
-    public function get_all_products($shoppingcart = FALSE){
+    public function get_items($shoppingcart = FALSE){
     if($shoppingcart === FALSE){
-        $query = $this->db->get('shoppingcart');
+        $query = $this->db->get('products');
         return $query->result_array();
 
     }
-    $query = $this->db->get_where('shoppingcart', array('shoppingcart' => $shoppingcart ));
+    $query = $this->db->get_where('products', array('idProducts' => $idProducts ));
         return $query->row_array();
-        */
+        
     }
   }
 
