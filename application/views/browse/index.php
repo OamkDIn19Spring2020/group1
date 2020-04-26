@@ -74,64 +74,23 @@
               });
               
               $(document).ready(function(){
-            $('.add_cart').click(function(){
-var idProducts    = $(this).data("idProducts");
-var description  = $(this).data("title");
-var title = $(this).data("price");
-var price = $('#' + product_id).val();
-$.ajax({
-url : "<?php echo site_url('product/add_to_cart');?>",
-method : "POST",
-data : {idProducts: idProducts, title: title, price: price, quantity: quantity},
-success: function(data){
-$('#detail_cart').html(data);
-}
-});
-});
-$('#detail_cart').load("<?php echo site_url('product/load_cart');?>");
-$(document).on('click','.romove_cart',function(){
-var row_id=$(this).attr("id");
-$.ajax({
-url : "<?php echo site_url('product/delete_cart');?>",
-method : "POST",
-data : {row_id : row_id},
-success :function(data){
-$('#detail_cart').html(data);
-}
-});
-});
-});
-              /*$(document).ready(function(){
+              $('.add_cart').click(function(){
+              var idProducts    = $(this).data("idProducts");
+              var description  = $(this).data("title");
+              var title = $(this).data("price");
+              var price = $('#' + idProducts).val();
 
-                $('.btn_buy').click(function(){
-                  var idProducts = $(this).data('idProducts');
-                  var description = $(this).data('description');
-                  var title=$(this).data('title');
-                  var price=$(this).data('price');
-                  if(idProducts != '' && idProducts > 0)
-                  {
-                      $.ajax({
-                        url:"<?php echo base_url(); ?>shoppingcart/add",
-                        method: "POST",
-                        data:{idProducts:idProducts, description:description, title:titile,
-                        price:price},
-                        success:function(data)
-                        {
-                          alert("Product added into cart");
-                          $('#cart_details').html(data);
-                          $("#buy_idProducts").val(idProducts);
-                          $("#buy_description").val(description);
-                          $("#buy_title").val(title);
-                          $("#buy_price").val(price);
-                        }
-                      });
-                  }
-                  else
-                  {
-                    alert("No items to add");
-                  }
+              $.ajax({
+              url : "<?php echo site_url('products/add_to_cart');?>",
+              method : "POST",
+              data : {idProducts: idProducts, title: title, price: price, quantity: quantity},
+              success: function(data){
+              $('#detail_cart').html(data);
+                }
+              });
+            });
 
-                });
-              });*/
-              </script>
-            </div>
+
+});
+</script>
+</div>

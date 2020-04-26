@@ -6,7 +6,7 @@ class Shoppingcart extends CI_Controller {
     function index(){
         $data['title'] = 'Shopping cart';
 
-        $data['data']=$this->shoppingcart_model->get_all_product();
+        $data['data']=$this->shoppingcart_model->get_all_products();
         $this->load->view('layouts/header');
         $this->load->view('layouts/body');
         $this->load->view('shoppingcart/index', $data);
@@ -14,6 +14,8 @@ class Shoppingcart extends CI_Controller {
     }
     
     function add_to_cart(){
+
+        $this->load->library('cart');
 
         $data = array(
             'id' => $this->input->post('idProducts'),
@@ -26,20 +28,22 @@ class Shoppingcart extends CI_Controller {
         }
 
         function show_cart(){
-        $output = '';
-        $no = 0;
-        foreach ($this->cart->contents() as $items) {
-        $no++;
-        $output .='
-        <tr>
-        <td>'.$items['name'].'</td>
-        <td>'.number_format($items['price']).'</td>
-        <td>'.$items['qty'].'</td>
-        <td>'.number_format($items['subtotal']).'</td>
-        <td><button type="button" id="'.$items['rowid'].'" class="romove_cart btn btn-danger btn-sm">Cancel</button></td>
-        </tr>
-        ';
+        
+            $output = '';
+            $no = 0;
+        
+            foreach ($this->cart->contents() as $items) {
+            $no++;
+            $output .='
+                    <tr>
+                    <td>'.$items['title'].'</td>
+                    <td>'.number_format($items['price']).'</td>
+                    <td>'.number_format($items['totalPrice']).'</td>
+                    <td><button type="button" id="'.$items['rowid'].'" class="romove_cart btn btn-danger btn-sm">Cancel</button></td>
+                    </tr>
+            ';
         }
+
         $output .= '
         <tr>
         <th colspan="3">Total</th>
@@ -54,7 +58,6 @@ class Shoppingcart extends CI_Controller {
         function delete_cart(){
         $data = array(
         'rowid' => $this->input->post('row_id'),
-        'qty' => 0,
         );
         $this->cart->update($data);
         echo $this->show_cart();
