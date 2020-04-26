@@ -18,13 +18,15 @@ class Shoppingcart extends CI_Controller {
         $this->load->library('cart');
 
         $data = array(
-            'idProducts' => $this->input->post('idProducts'),
             'title' => $this->input->post('title'),
+            'idProducts' => $this->input->post('idProducts'),
+            'idCustomers' => $this->input->post('idCustomers'),
             'price' => $this->input->post('price'),
         );
 
         $this->cart->insert($data);
         echo $this->show_cart();
+
         }
 
         function show_cart(){
@@ -39,8 +41,9 @@ class Shoppingcart extends CI_Controller {
             $output .='
                     <tr>
                     <td>'.$items['title'].'</td>
+                    <td>'.$items['idProducts'].'</td>
                     <td>'.number_format($items['price']).'</td>
-                    <td>'.number_format($items['totalPrice']).'</td>
+                    <td>'.number_format($items['totalPrice']).'</td><br>
                     <td><button type="button" id="'.$items['rowid'].'" class="romove_cart btn btn-danger btn-sm">Cancel</button></td>
                     </tr>
             ';
@@ -48,8 +51,9 @@ class Shoppingcart extends CI_Controller {
 
         $output .= '
         <tr>
+        <br>< /br>
         <th colspan="3">Total</th>
-        <th colspan="2">'.'Rp '.number_format($this->cart->total()).'</th>
+        <th colspan="2">'.'€ '.number_format($this->cart->total()).'</th>
         </tr>
         ';
         return $output;

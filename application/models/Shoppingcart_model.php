@@ -1,6 +1,6 @@
 <?php
 
-class Shoppingcart_model extends CI_Model{
+    class Shoppingcart_model extends CI_Model{
 
      public function __construct(){
         $this->load->database();
@@ -11,13 +11,13 @@ class Shoppingcart_model extends CI_Model{
     $result=$this->db->get('shoppingcart');
     return $result;
 
-/*class Shoppingcart_model extends CI_Model{
+    /*class Shoppingcart_model extends CI_Model{
     public function __construct(){
         $this->load->database();
 }   
 
     public function get_all_products($shoppingcart = FALSE){
-    if($idProducts === FALSE){
+    if($shoppingcart === FALSE){
         $query = $this->db->get('shoppingcart');
         return $query->result_array();
 
@@ -25,7 +25,6 @@ class Shoppingcart_model extends CI_Model{
     $query = $this->db->get_where('shoppingcart', array('shoppingcart' => $shoppingcart ));
         return $query->row_array();
         */
-        
     }
   }
 

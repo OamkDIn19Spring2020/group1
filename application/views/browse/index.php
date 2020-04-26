@@ -49,7 +49,7 @@
                           <input type="text" id="buy_price" name="price" value=""> <br>
                         
                         </div>
-                        <input type="submit" id="add_cart" class="btn add_cart btn-success" name="add_cart" value="Buy">
+                        <input type="submit" id="add_cart" class="btn add_cart btn-success" name="" value="Buy">
                       </form>
                   </div>
                   <div class="modal-footer">
@@ -81,7 +81,7 @@
               var price = $('#' + idProducts).val();
 
               $.ajax({
-              url : "<?php echo site_url('products/add_to_cart');?>",
+              url : "<?php echo site_url('shoppingcart/add_to_cart');?>",
               method : "POST",
               data : {idProducts: idProducts, title: title, price: price, totalPrice: totalPrice},
               success: function(data){
