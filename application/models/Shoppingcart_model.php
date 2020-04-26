@@ -1,6 +1,20 @@
 <?php
 
-    class Shoppingcart_model extends CI_Model{
+class Shoppingcart_model extends CI_Model{
+
+    public function __construct(){
+        $this->load->database();
+
+    } 
+ 
+    function get_items(){
+        $result=$this->db->get('products');
+        return $result;
+    }
+     
+}
+
+    /*class Shoppingcart_model extends CI_Model{
     public function __construct(){
         $this->load->database();
 }   
@@ -15,5 +29,5 @@
         return $query->row_array();
         
     }
-  }
+  }*/
 

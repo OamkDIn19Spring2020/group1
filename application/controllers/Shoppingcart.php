@@ -46,13 +46,14 @@ class Shoppingcart extends CI_Controller {
         }
 
         $output .= '
-        <tr>
-        <br>< /br>
-        <th colspan="3">Total</th>
-        <th colspan="2">'.'€ '.number_format($this->cart->total()).'</th>
-        </tr>
+                <tr>
+                <th colspan="3">Total</th>
+                <th colspan="2">'.'€ '.number_format($this->cart->total()).'</th>
+                </tr>
         ';
+    
         return $output;
+
         }
 
         function load_cart(){

@@ -25,6 +25,7 @@
   </tbody>
 </table>
       <!-- buyModal -->
+      <?php foreach ($data->result() as $row) : ?>
             <div class="modal fade" id="buyModal" role="dialog">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -49,7 +50,7 @@
                           <input type="text" id="buy_price" name="price" value=""> <br>
                         
                         </div>
-                        <input type="submit" id="add_cart" class="btn add_cart btn-success" name="" value="Buy">
+                        <button class="add_cart btn btn-success btn-block" data-idProducts="<?php echo $row->idProducts;?>" data-title="<?php echo $row->title;?>" data-price="<?php echo $row->price;?>">Add To Cart</button>
                       </form>
                   </div>
                   <div class="modal-footer">
@@ -58,6 +59,7 @@
                 </div>
               </div>
             </div>
+      <?php endforeach; ?>
             <script>
               $(document).on( "click", '#buyBtn',function() {
                   console.log("Update modal open");

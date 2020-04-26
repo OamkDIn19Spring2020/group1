@@ -15,5 +15,6 @@ class Browse_model extends CI_Model{
     $query = $this->get_where('products', array('idProducts' => $idProducts));
     return $query->row_array();
   }
+  
 }
 
