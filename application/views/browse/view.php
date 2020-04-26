@@ -1,4 +1,4 @@
-
+<h2>Shopping cart</h2>
 <div class="col-md-4">
 <div class="text-muted">
   <h4><?= $title ?></h4>
@@ -10,7 +10,9 @@
           <th class="text-muted">Actions</th>
           </tr>
         </thead>
-      <tbody id="detail_cart"></tbody>
+      <tbody id="detail_cart">
+      <tr>
+        </tbody>
       </table>
 </div>
 
@@ -23,7 +25,7 @@
               var price = $('#' + idProducts).val();
 
               $.ajax({
-              url : "<?php echo site_url('shoppingcart/add_to_cart');?>",
+              url : "<?php echo site_url('browse/add_to_cart');?>",
               method : "POST",
               data : {idProducts: idProducts, title: title, price: price, totalPrice: totalPrice},
               success: function(data){
@@ -33,13 +35,13 @@
             });
           });
 
-          $('#detail_cart').load("<?php echo site_url('shoppingcart/load_cart');?>");
+          $('#detail_cart').load("<?php echo site_url('view/load_cart');?>");
 
           $(document).on('click','.romove_cart',function(){
           var row_id=$(this).attr("id");
 
            $.ajax({
-          url : "<?php echo site_url('shoppingcart/delete_cart');?>",
+          url : "<?php echo site_url('view/delete_cart');?>",
           method : "POST",
           data : {row_id : row_id},
           success :function(data){

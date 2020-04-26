@@ -25,7 +25,6 @@
   </tbody>
 </table>
       <!-- buyModal -->
-      <?php foreach ($data->result() as $row) : ?>
             <div class="modal fade" id="buyModal" role="dialog">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -36,7 +35,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                      <form class="" action="<?php echo site_url('shoppingcart'); ?>" method="post">
+                      <form class="" action="<?php echo site_url('browse/view'); ?>" method="post">
                         <div class="form-group">
                           <input type="hidden" id="buy_idProducts" name="idProducts" value="" >
                           
@@ -50,7 +49,7 @@
                           <input type="text" id="buy_price" name="price" value=""> <br>
                         
                         </div>
-                        <button class="add_cart btn btn-success btn-block" data-idProducts="<?php echo $row->idProducts;?>" data-title="<?php echo $row->title;?>" data-price="<?php echo $row->price;?>">Add To Cart</button>
+                        <input type="submit" id="add_cart" class="btn add_cart btn-success" name="" value="Buy">
                       </form>
                   </div>
                   <div class="modal-footer">
@@ -59,7 +58,6 @@
                 </div>
               </div>
             </div>
-      <?php endforeach; ?>
             <script>
               $(document).on( "click", '#buyBtn',function() {
                   console.log("Update modal open");
@@ -78,11 +76,34 @@
               $(document).ready(function(){
               $('.add_cart').click(function(){
               var idProducts    = $(this).data("idProducts");
-              var title  = $(this).data("title");
-              var price = $(this).data("price");
+              var description  = $(this).data("title");
+              var title = $(this).data("price");
               var price = $('#' + idProducts).val();
 
+              $.ajax({
+              url : "<?php echo site_url('view/add_to_cart');?>",
+              method : "POST",
+              data : {idProducts: idProducts, title: title, price: price, totalPrice: totalPrice},
+              success: function(data){
+              $('#detail_cart').html(data);
+                }
+              });
             });
+          });
+
+          $('#detail_cart').load("<?php echo site_url('view/load_cart');?>");
+
+          $(document).on('click','.romove_cart',function(){
+          var row_id=$(this).attr("id");
+
+           $.ajax({
+          url : "<?php echo site_url('view/delete_cart');?>",
+          method : "POST",
+          data : {row_id : row_id},
+          success :function(data){
+          $('#detail_cart').html(data); 
+        }
+  });
 });
 </script>
 </div>

@@ -40,6 +40,10 @@
             <?php if($this->session->flashdata('deleted')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('deleted').'</p>'; ?>
             <?php endif; ?>
+
+            <?php if($this->session->flashdata('empty_cart')): ?>
+            <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('empty_cart').'</p>'; ?>
+            <?php endif; ?>
         </div>
        
                     

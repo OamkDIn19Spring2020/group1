@@ -12,9 +12,11 @@ class Browse_model extends CI_Model{
       $query = $this->db->get('products');
       return $query->result_array();
     }
-    $query = $this->get_where('products', array('idProducts' => $idProducts));
+    $query = $this->db->get_where('products', array('idProducts' => $idProducts));
     return $query->row_array();
   }
+
+  
   
 }
 
