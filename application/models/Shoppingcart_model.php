@@ -22,7 +22,7 @@ class Shoppingcart_model extends CI_Model{
         return $query->result_array();
 
     }
-    $query = $this->db->get_where('shoppingcart', array('idProducts' => $idProducts ));
+    $query = $this->db->get_where('shoppingcart', array('shoppingcart' => $shoppingcart ));
         return $query->row_array();
         */
         

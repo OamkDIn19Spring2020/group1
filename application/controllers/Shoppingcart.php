@@ -18,8 +18,8 @@ class Shoppingcart extends CI_Controller {
         $this->load->library('cart');
 
         $data = array(
-            'id' => $this->input->post('idProducts'),
-            'name' => $this->input->post('title'),
+            'idProducts' => $this->input->post('idProducts'),
+            'title' => $this->input->post('title'),
             'price' => $this->input->post('price'),
         );
 
@@ -28,6 +28,8 @@ class Shoppingcart extends CI_Controller {
         }
 
         function show_cart(){
+
+            $this->load->library('cart');
         
             $output = '';
             $no = 0;
@@ -52,9 +54,11 @@ class Shoppingcart extends CI_Controller {
         ';
         return $output;
         }
+
         function load_cart(){
         echo $this->show_cart();
         }
+
         function delete_cart(){
         $data = array(
         'rowid' => $this->input->post('row_id'),
@@ -62,4 +66,4 @@ class Shoppingcart extends CI_Controller {
         $this->cart->update($data);
         echo $this->show_cart();
         }
-        }
+    }

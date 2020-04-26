@@ -17,9 +17,27 @@
 </div>
 
 <script>
+            $(document).ready(function(){
+              $('.add_cart').click(function(){
+              var idProducts    = $(this).data("idProducts");
+              var description  = $(this).data("title");
+              var title = $(this).data("price");
+              var price = $('#' + idProducts).val();
+
+              $.ajax({
+              url : "<?php echo site_url('products/add_to_cart');?>",
+              method : "POST",
+              data : {idProducts: idProducts, title: title, price: price, totalPrice: totalPrice},
+              success: function(data){
+              $('#detail_cart').html(data);
+                }
+              });
+            });
+          });
+
   $('#detail_cart').load("<?php echo site_url('products/load_cart');?>");
+
   $(document).on('click','.romove_cart',function(){
-  
   var row_id=$(this).attr("id");
 
   $.ajax({

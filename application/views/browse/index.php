@@ -83,14 +83,12 @@
               $.ajax({
               url : "<?php echo site_url('products/add_to_cart');?>",
               method : "POST",
-              data : {idProducts: idProducts, title: title, price: price, quantity: quantity},
+              data : {idProducts: idProducts, title: title, price: price, totalPrice: totalPrice},
               success: function(data){
               $('#detail_cart').html(data);
                 }
               });
             });
-
-
 });
 </script>
 </div>
