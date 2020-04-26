@@ -5,7 +5,7 @@ class Shoppingcart extends CI_Controller {
 
     public function index()
     {
-        $data['title'] = 'Cart';
+        $data['title'] = 'Shopping cart';
         $data['shoppingcart'] = $this->shoppingcart_model->get_items();
         
         $this->load->view('layouts/header');
