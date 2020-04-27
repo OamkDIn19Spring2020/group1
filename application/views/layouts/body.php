@@ -11,8 +11,8 @@
         </nav>
         
         <div class="content-view">
-       
-        <div class="container">
+        <br>
+        <div class="d-flex justify-content-center">
             <?php if($this->session->flashdata('users_registered')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('users_registered').'</p>'; ?>
             <?php endif; ?>
