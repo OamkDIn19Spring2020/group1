@@ -1,5 +1,5 @@
 <div class="text-muted">
-<h3><?= $title ?></h3>
+<h3>Sold Products</h3>
 <table class="table">
   <thead>
     <tr class="text-muted">
@@ -35,7 +35,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                      <form class="" action="<?php echo site_url('browse/view'); ?>" method="post">
+                      <form class="" action="<?php echo site_url('browse/add_to_cart'); ?>" method="post">
                         <div class="form-group">
                           <input type="hidden" id="buy_idProducts" name="idProducts" value="" >
                           
@@ -91,7 +91,7 @@
             });
           });
 
-          $('#detail_cart').load("<?php echo site_url('view/load_cart');?>");
+          $('#detail_cart').load("<?php echo site_url('browse/load_cart');?>");
 
           $(document).on('click','.romove_cart',function(){
           var row_id=$(this).attr("id");

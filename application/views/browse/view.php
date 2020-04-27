@@ -35,13 +35,13 @@
             });
           });
 
-          $('#detail_cart').load("<?php echo site_url('view/load_cart');?>");
+          $('#detail_cart').load("<?php echo site_url('browse/load_cart');?>");
 
           $(document).on('click','.romove_cart',function(){
           var row_id=$(this).attr("id");
 
            $.ajax({
-          url : "<?php echo site_url('view/delete_cart');?>",
+          url : "<?php echo site_url('browse/delete_cart');?>",
           method : "POST",
           data : {row_id : row_id},
           success :function(data){

@@ -33,12 +33,14 @@ class Browse extends CI_Controller{
   public function add_to_cart(){
 
     $data = array(
-        'title' => $this->input->post('title'),
+        'idCustomers' => $this->input->post('idCustomers'),
         'idProducts' => $this->input->post('idProducts'),
-        'price' => $this->input->post('price'),
+        'totalPrice' => $this->input->post('totalPrice'),
     );
 
-    $this->cart->insert($data);
+    $this->load->model('Browse_model');
+    $this->browse_model->insert_to_cart($data);
+
     echo $this->show_cart();
 
     }
@@ -54,8 +56,7 @@ class Browse extends CI_Controller{
                 <tr>
                 <td>'.$items['title'].'</td>
                 <td>'.$items['idProducts'].'</td>
-                <td>'.number_format($items['price']).'</td>
-                <td>'.number_format($items['totalPrice']).'</td><br>
+                <td>'.number_format($items['totalPrice']).'</td>
                 <td><button type="button" id="'.$items['rowid'].'" class="romove_cart btn btn-danger btn-sm">Cancel</button></td>
                 </tr>
         ';
@@ -80,6 +81,7 @@ class Browse extends CI_Controller{
     $data = array(
     'rowid' => $this->input->post('row_id'),
     );
+
     $this->cart->update($data);
     echo $this->show_cart();
     }

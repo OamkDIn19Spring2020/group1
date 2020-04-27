@@ -16,7 +16,8 @@ class Browse_model extends CI_Model{
     return $query->row_array();
   }
 
-  
-  
+  public function insert_to_cart($data){
+    $this->db->insert('shoppingcart', $data);
+  }
 }
 
