@@ -2,10 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Browse extends CI_Controller{
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->library('cart');
+  }
   
   public function index(){
     $data['title'] = 'Browse Products';
-    $data['items'] = $this->browse_model->get_items();
+    $data['items'] = $this->browse_model->get_items();    
     
     $this->load->view('layouts/header');
     $this->load->view('layouts/body');
@@ -13,76 +18,95 @@ class Browse extends CI_Controller{
     $this->load->view('layouts/footer');
   }
 
-  public function view($idProducts = NULL){
-    $data['items'] = $this->browse_model->get_items($idProducts);
+    /*public function view($idProducts = NULL){
+      $data['products'] = $this->browse_model->get_items();
 
-    if(empty($data['items'])){
+    if(empty($data['products'])){
       $this->session->set_flashdata('empty_cart', 'Shopping cart is empty');
     }
 
-    $data['title'] = $data['items']['title'];
+    $data['title'] = $data['products'];
 
     $this->load->view('layouts/header');
     $this->load->view('layouts/body');
     $this->load->view('browse/view', $data);
     $this->load->view('layouts/footer');
 
-  }
+  }*/
 
   /*add products to cart*/
   public function add_to_cart(){
 
-    $data = array(
-        'idCustomers' => $this->input->post('idCustomers'),
-        'idProducts' => $this->input->post('idProducts'),
-        'totalPrice' => $this->input->post('totalPrice'),
+    $insert_data = array( 'idProducts' => $this->input->post('idProducts'),
+                          'idCustomers' => $this->input->post('idCustomers'),
+                          'totalPrice' => $this->input->post('totalPrice'), 
     );
 
-    $this->load->model('Browse_model');
-    $this->browse_model->insert_to_cart($data);
+    //This function add items into cart.
+    $this->cart->insert($insert_data);
 
-    echo $this->show_cart();
+    redirect('shoppingcart');
 
     }
 
-    public function show_cart(){
 
-        $output = '';
-        $no = 0;
-    
-        foreach ($this->cart->contents() as $items) {
-        $no++;
-        $output .='
-                <tr>
-                <td>'.$items['title'].'</td>
-                <td>'.$items['idProducts'].'</td>
-                <td>'.number_format($items['totalPrice']).'</td>
-                <td><button type="button" id="'.$items['rowid'].'" class="romove_cart btn btn-danger btn-sm">Cancel</button></td>
-                </tr>
-        ';
-    }
+    public function delete_cart($rowid){
 
-    $output .= '
-            <tr>
-            <th colspan="3">Total</th>
-            <th colspan="2">'.'€ '.number_format($this->cart->total()).'</th>
-            </tr>
-    ';
+      if($rowid == 'all'){
+        $this->cart->destroy();
+      }
+      else
+      {
+        $data = array(
+          'rowid' => $rowid,
+          );
 
-    return $output;
+          $this->cart->update($data);
+      }
 
     }
 
     function load_cart(){
-    echo $this->show_cart();
+
+      $cart_info = $_POST['cart'];
+      
+      foreach ($cart_info as $idProducts => $cart)
+      {
+          $rowid = $cart['rowid'];
+          $idCustomers = $cart['idCustomers'];
+          $idSellers = $cart['idSellers'];
+          $totalPrice = $cart['totalPrice'];
+      }
     }
 
-    public function delete_cart(){
-    $data = array(
-    'rowid' => $this->input->post('row_id'),
-    );
+    function update_cart(){
+      // Recieve post values,calcute them and update
+      $cart_info = $_POST['cart'] ;
 
-    $this->cart->update($data);
-    echo $this->show_cart();
-    }
+      foreach( $cart_info as $id => $cart)
+      {
+      $rowid = $cart['rowid'];
+      $totalPrice = $cart['totalPrice'];
+      $idCustomers = $cart['idCustomers'];
+      $idSellers = $cart['idSellers'];
+      
+      $data = array(
+      'rowid' => $rowid,
+      'totalPrice' => $totalPrice,
+      'idCustomers' => $idCustomers,
+      'idSellers' => $idSellers
+      );
+      
+      $this->cart->update($data);
+      }
+      redirect('browse/view');
+      }
+
+      function cart_view(){
+        // Load cart view
+        $this->load->view('layouts/header');
+        $this->load->view('layouts/body');
+        $this->load->view('browse/view', $data);
+        $this->load->view('layouts/footer');
+        }
 }
