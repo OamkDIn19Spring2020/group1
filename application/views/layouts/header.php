@@ -22,7 +22,7 @@
                 <a href="<?php echo base_url(); ?>sellers/logout">Log out</a>
                 <?php endif; ?>
                <div class="shopping-cart">
-                <a href="#">Shopping cart</a>
+                <a class="nav-link" href="<?php echo base_url(); ?>index.php/shoppingcart">Shopping Cart</a>
                </div>
             </nav>
         </header>

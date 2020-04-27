@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-$autoload['packages'] = array('form_validation', 'session');
+$autoload['packages'] = array('form_validation', 'session', 'cart');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('customer_model', 'seller_model', 'create_model', 'browse_model');
+$autoload['model'] = array('customer_model', 'seller_model', 'create_model', 'browse_model', 'shoppingcart_model');

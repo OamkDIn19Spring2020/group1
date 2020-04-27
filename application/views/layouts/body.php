@@ -2,11 +2,11 @@
     <div class="content">
          <nav class="sidebar">
          <ul class="side-nav">
-            <li><a href="<?php echo base_url(); ?>">Home</a></li><br>
-            <li><a href="<?php echo base_url(); ?>index.php/browse">Browse Products</a></li><br>
-            <li><a href="<?php echo base_url(); ?>index.php/create">Sell Products</a></li><br>
-            <li><a href="<?php echo base_url(); ?>index.php/login">Login</a></li><br>
-            <li><a href="<?php echo base_url(); ?>index.php/register">Register</a></li>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>">Home</a></li><br>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/browse">Browse Products</a></li><br>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/create">Sell Products</a></li><br>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/login">Login</a></li><br>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/register">Register</a></li>
             </ul>
         </nav>
         

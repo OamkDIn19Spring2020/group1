@@ -1,13 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Create_model extends CI_Model{
+class Shoppingcart_model extends CI_Model{
 
   
   public function get_items() {
     $this->db->select('*');
-    $this->db->from('products');
-    $this->db->where('idSellers', '1');
+    $this->db->from('shoppingcart');
     return $this->db->get()->result_array();
   }
 
@@ -21,7 +20,7 @@ class Create_model extends CI_Model{
   }*/
    
   public function addItem($insert_data){
-    $this->db->insert('products',$insert_data);
+    $this->db->insert('shoppingcart',$insert_data);
     return $this->db->affected_rows();
   }
 
@@ -31,9 +30,9 @@ class Create_model extends CI_Model{
       return $this->db->affected_rows();
   }
   
-  public function deleteItem($id){
-    $this->db->where('idProducts',$id);
-    $this->db->delete('products');
+  public function deleteCart($id){
+    $this->db->where('idShoppingCart',$id);
+    $this->db->delete('shoppingcart');
     return $this->db->affected_rows();
   }
 }
