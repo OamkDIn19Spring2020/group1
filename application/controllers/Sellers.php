@@ -32,7 +32,7 @@ class Sellers extends CI_Controller {
 
           //Login function
           public function login(){
-            $data['title'] = 'Sing In';
+            $data['title'] = 'Sign In';
     
             $this->form_validation->set_rules('email', 'Email', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');

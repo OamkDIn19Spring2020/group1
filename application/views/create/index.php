@@ -1,7 +1,7 @@
 <div class="container">
 <div class="text-muted">
 <h3 class="font-weight-bold" style="margin-top: 10px">Add Listing</h3><br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New Item</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New Item</button><br/><br/>
 <div class="d-inline-flex pre-scrollable" style="max-height: 850px">
 <table class="table">
   <thead>
@@ -65,9 +65,10 @@
                     <input type="text" id="price" name="price" value=""> <br>
 
                     <label for="image">Image</label> <br>
-                    <input type="text" id="image" name="image" value=""> <br>
+                    <form class="" method="post" action="<?=base_url('store-image')?>" enctype="multipart/form-data">
+                        <input type="file" id="profile_image" name="profile_image" size="33" method="post"/action="<?=base_url('store-image')?>" enctype="multipart/form-data"><br/>
 
-                    <label for="idSellers">Seller ID</label> <br>
+                    <label for="idSellers">Seller ID</label> <br/>
                     <input type="text" id="idSellers" name="idSellers" value=""> <br>
                   </div>
                   <input type="submit" class="btn btn-primary" name="" value="Add">

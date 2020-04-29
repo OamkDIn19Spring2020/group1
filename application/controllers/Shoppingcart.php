@@ -33,4 +33,9 @@ class Shoppingcart extends CI_Controller{
     redirect('shoppingcart/index');
   }
 
+  public function send_order(){
+      $this->shoppingcart_model->emptyCart();
+      redirect('shoppingcart/index');
+}
+
 }

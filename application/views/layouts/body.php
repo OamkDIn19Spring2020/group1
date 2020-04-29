@@ -4,7 +4,9 @@
          <ul class="side-nav">
             <li><a class="nav-link" href="<?php echo base_url(); ?>">Home</a></li><br>
             <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/browse">Browse Products</a></li><br>
+            <?php if($this->session->userdata('logged_in_seller')) : ?>
             <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/create">Sell Products</a></li><br>
+            <?php endif; ?>
             <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/login">Login</a></li><br>
             <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/register">Register</a></li>
             </ul>
@@ -39,6 +41,10 @@
 
             <?php if($this->session->flashdata('deleted')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('deleted').'</p>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('empty_cart')): ?>
+            <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('empty_cart').'</p>'; ?>
             <?php endif; ?>
         </div>
        

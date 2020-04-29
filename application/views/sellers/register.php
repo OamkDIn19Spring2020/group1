@@ -49,6 +49,8 @@
     </div>
     </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="wrapper">
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
 </div>
 <?php echo form_close(); ?>

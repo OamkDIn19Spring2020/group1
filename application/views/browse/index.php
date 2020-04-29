@@ -1,7 +1,7 @@
 <div class="container">
 <div class="text-muted">
 <h3 class="font-weight-bold" style="margin-top: 10px">Browse Products</h3><br>
-<div class="d-inline-flex pre-scrollable" style="max-height: 850px">
+<div class="d-inline-flex pre-scrollable" style="max-height: 850px;">
 <table class="table">
   <thead>
     <tr class="text-muted">

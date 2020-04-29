@@ -35,5 +35,9 @@ class Shoppingcart_model extends CI_Model{
     $this->db->delete('shoppingcart');
     return $this->db->affected_rows();
   }
+   public function emptyCart(){
+     $this->db->empty_table('shoppingcart');    
+     return $this->db->affected_rows();
+  }
 }
 

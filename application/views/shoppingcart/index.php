@@ -25,6 +25,7 @@
   
     ?>
   </tbody>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#sendModal">Send order</button><br/><br/>
 </table>
 </div>
 </div>
@@ -60,6 +61,31 @@
                       </div>
                     </div>
                   </div>
+<!-- addModal -->
+      <div class="modal fade" id="sendModal" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Do you want send the order?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form class="" action="<?php echo site_url('shoppingcart/send_order'); ?>" method="post">
+                  <div class="form-group">
+
+                  </div>
+                  <input type="submit" class="btn btn-success" name="" value="Send order">
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
             <script>
 
               $(document).on( "click", '#deleteBtn',function() {

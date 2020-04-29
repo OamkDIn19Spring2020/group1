@@ -7,7 +7,7 @@
 </div>
 <br></br>
 <h2 class="text-muted font-weight-bold d-flex justify-content-center">Welcome to Discover Commerce</h2>
-<p class="text-muted font-italic d-flex justify-content-center">Where sellers and customers meet</p>
+<p class="text-muted font-italic d-flex justify-content-center">Connecting customers and sellers</p>
 <br></br>
 <h3 class="text-muted d-flex justify-content-center">Our user reviews</h3>
 
