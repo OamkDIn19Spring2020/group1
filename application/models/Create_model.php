@@ -3,7 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Create_model extends CI_Model{
 
-  
+  public function __construct(){
+    $this->load->database();
+  }
+
   public function get_items() {
     $this->db->select('*');
     $this->db->from('products');
@@ -19,7 +22,7 @@ class Create_model extends CI_Model{
     $query = $this->get_where('products', array('idProducts' => $idProducts));
     return $query->row_array();
   }*/
-   
+  
   public function addItem($insert_data){
     $this->db->limit(1);
     $this->db->insert('products',$insert_data);
@@ -37,5 +40,5 @@ class Create_model extends CI_Model{
     $this->db->delete('products');
     return $this->db->affected_rows();
   }
-}
 
+}

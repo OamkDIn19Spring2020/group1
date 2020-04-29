@@ -46,9 +46,5 @@
             <?php if($this->session->flashdata('empty_cart')): ?>
             <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('empty_cart').'</p>'; ?>
             <?php endif; ?>
-        </div>
-       
-                    
-                    
-          
-          
+
+          </div>

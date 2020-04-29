@@ -1,11 +1,9 @@
-<div class="container">
 <div class="text-muted">
-<h3 class="font-weight-bold" style="margin-top: 10px">Add Listing</h3><br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New Item</button><br/><br/>
-<div class="d-inline-flex pre-scrollable" style="max-height: 850px">
+<h2>Create listing</h2>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New Item</button>
 <table class="table">
   <thead>
-    <tr class="text-muted">
+    <tr>
       <th>id</th>
       <th>Category</th>
       <th>Title</th>
@@ -17,10 +15,9 @@
     </tr>
   </thead>
   <tbody>
-  <?php
-
-  foreach ($items as $row) {
-    echo '<tr class="text-muted">';
+    <?php
+    foreach ($items as $row) {
+    echo '<tr>';
     echo '<td>'.$row['idProducts'].'</td><td>'.$row['idProductCategories'].'</td><td>'.$row['title'].'</td><td>'.$row['description'].'</td><td>'.$row['price'].'</td><td>'.$row['image'].'</td>';
     echo '<td><button type="button" id="editBtn" class="btn btn-primary myBtn" data-toggle="modal" data-target="#editModal" data-id="'.$row['idProducts'].'" data-title="'.$row['title'].'" data-description="'.$row['description'].'" data-price="'.$row['price'].'" data-image="'.$row['image'].'">
         Edit
@@ -30,14 +27,9 @@
       </button></td>';
     echo '</tr>';
     }
-
     ?>
   </tbody>
 </table>
-</div>
-</div>
-</div>
-
 <!-- addModal -->
       <div class="modal fade" id="addModal" role="dialog">
         <div class="modal-dialog" role="document">
@@ -65,11 +57,9 @@
                     <input type="text" id="price" name="price" value=""> <br>
 
                     <label for="image">Image</label> <br>
+                    <input type="text" id="image" name="image" value=""> <br>
 
-                    <form class="" method="post" action="<?=base_url('store-image')?>" enctype="multipart/form-data">
-                        <input type="file" id="profile_image" name="profile_image" size="33" method="post"/action="<?=base_url('store-image')?>" enctype="multipart/form-data"><br/>
-
-                    <label for="idSellers">Seller ID</label> <br/>
+                    <label for="idSellers">Seller ID</label> <br>
                     <input type="text" id="idSellers" name="idSellers" value=""> <br>
                   </div>
                   <input type="submit" class="btn btn-primary" name="" value="Add">
@@ -180,4 +170,7 @@
                   $("#delete_image").val(image);
               });
               </script>
-            </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> b1a0d74019456f2e01f90a898a658af25ca619bf

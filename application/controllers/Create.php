@@ -26,13 +26,14 @@ class Create extends CI_Controller{
           'description'=>$this->input->post('description'),
           'price'=>$this->input->post('price'),
           'image'=>$this->input->post('image'),
-	  'idSellers'=>$this->input->post('idSellers'),
+	        'idSellers'=>$this->input->post('idSellers'),
           'created'=>$c_date
     );
-    $this->db->set('created', 'NOW()', FALSE);
+    $this->db->set('created', 'NOW()' FALSE);
     $this->db->insert('products', $data);
     $this->create_model->addItem($insert_data);
     $this->session->set_flashdata('added', 'Product added successfully');
+    $test=$this->create_model->addItem($insert_data);
     redirect('create/index');
   }
 
