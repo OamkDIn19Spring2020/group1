@@ -2,11 +2,13 @@
     <div class="content">
          <nav class="sidebar">
          <ul class="side-nav">
-            <li><a href="<?php echo base_url(); ?>">Home</a></li><br>
-            <li><a href="#">Browse Products</a></li><br>
-            <li><a href="<?php echo base_url(); ?>create">Sell Products</a></li><br>
-            <li><a href="<?php echo base_url(); ?>login">Login</a></li><br>
-            <li><a href="<?php echo base_url(); ?>Register">Register</a></li>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>">Home</a></li><br>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/browse">Browse Products</a></li><br>
+            <?php if($this->session->userdata('logged_in_seller')) : ?>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/create">Sell Products</a></li><br>
+            <?php endif; ?>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/login">Login</a></li><br>
+            <li><a class="nav-link" href="<?php echo base_url(); ?>index.php/register">Register</a></li>
             </ul>
         </nav>
         
@@ -40,9 +42,9 @@
             <?php if($this->session->flashdata('deleted')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('deleted').'</p>'; ?>
             <?php endif; ?>
-        </div>
-       
-                    
-                    
-          
-          
+
+            <?php if($this->session->flashdata('empty_cart')): ?>
+            <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('empty_cart').'</p>'; ?>
+            <?php endif; ?>
+
+          </div>

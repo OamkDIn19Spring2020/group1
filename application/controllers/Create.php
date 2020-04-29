@@ -4,18 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Create extends CI_Controller{
   
   public function index(){
-    $data['title'] = 'Create listing';
+    $data['title'] = 'Add listing';
     $data['items'] = $this->create_model->get_items();
     
-  public function index(){
-    $data['title'] = 'Create listing';
-    $data['items'] = $this->create_model->get_items();
-
     $this->load->view('layouts/header');
     $this->load->view('layouts/body');
     $this->load->view('create/index', $data);
     $this->load->view('layouts/footer');
-    
   }
     public function insert_item(){
       $this->load->helper('date');
@@ -27,9 +22,11 @@ class Create extends CI_Controller{
         $c_date=date("Y-m-d H:i:s").'<br>';
         $insert_data=array(
           'title'=>$this->input->post('title'),
+          'idProductCategories'=>$this->input->post('idProductCategories'),
           'description'=>$this->input->post('description'),
           'price'=>$this->input->post('price'),
           'image'=>$this->input->post('image'),
+	        'idSellers'=>$this->input->post('idSellers'),
           'created'=>$c_date
     );
     $this->db->set('created', 'NOW()' FALSE);

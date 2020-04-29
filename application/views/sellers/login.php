@@ -1,20 +1,21 @@
-<div class="container d-inline-flex">
+<br></br>
+<h3 class="text-center text-muted"><?php echo $title; ?></h3>
+<?php echo validation_errors(); ?>
 <?php echo form_open('sellers/login'); ?>
-  <br></br>
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <h3 class="text-center text-muted"><?php echo $title; ?></h3>
-        <div class="form-group">
-            <input type="email" name="email" class="form-group" placeholder="Enter Email" required autofocus>
+<br>
+<div class="d-flex flex-column">
+<div class="d-flex justify-content-center">
+  <fieldset>
+        <div class="form-group p-1">
+          <input type="email" name="email" class="form-group" placeholder="Enter Email" required autofocus>
         </div>
-      </div>
-    </div>
-        <div class="form-group">
+      <div class="form-group p-1">
         <input type="password" name="password" class="form-group" placeholder="Enter Password" required autofocus>
-            </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-        </div>  
-        </div>
+      </div>
+    <div class="form-group text-muted">
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </div>
+<fieldset>
+</div>
 </div>
 <?php echo form_close(); ?>
